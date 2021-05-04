@@ -5228,7 +5228,6 @@
             "time": "2021-04-25T12:00:00+00:00"
         },
         {
-<<<<<<< HEAD
             "name": "fzaninotto/faker",
             "version": "dev-master",
             "source": {
@@ -5244,28 +5243,6 @@
             },
             "require": {
                 "php": "^5.3.3 || ^7.0 || ^8.0"
-=======
-            "name": "hamcrest/hamcrest-php",
-            "version": "v2.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/hamcrest/hamcrest-php.git",
-                "reference": "8c3d0a3f6af734494ad8f6fbbee0ba92422859f3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/hamcrest/hamcrest-php/zipball/8c3d0a3f6af734494ad8f6fbbee0ba92422859f3",
-                "reference": "8c3d0a3f6af734494ad8f6fbbee0ba92422859f3",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.3|^7.0|^8.0"
-            },
-            "replace": {
-                "cordoval/hamcrest-php": "*",
-                "davedevelopment/hamcrest-php": "*",
-                "kodova/hamcrest-php": "*"
->>>>>>> 24ef3c4af9f0f902ddc30d07bc3c861bc0028c48
             },
             "require-dev": {
                 "phpunit/php-file-iterator": "^1.4 || ^2.0",
@@ -5292,18 +5269,11 @@
                 "test"
             ],
             "support": {
-<<<<<<< HEAD
                 "issues": "https://github.com/fzaninotto/Faker/issues",
                 "source": "https://github.com/fzaninotto/Faker/tree/master"
             },
             "abandoned": true,
             "time": "2020-12-11T09:59:14+00:00"
-=======
-                "issues": "https://github.com/hamcrest/hamcrest-php/issues",
-                "source": "https://github.com/hamcrest/hamcrest-php/tree/v2.0.1"
-            },
-            "time": "2020-07-09T08:09:16+00:00"
->>>>>>> 24ef3c4af9f0f902ddc30d07bc3c861bc0028c48
         },
         {
             "name": "laravel/sail",
