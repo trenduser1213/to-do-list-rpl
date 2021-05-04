@@ -1,6 +1,9 @@
 body{
     margin: 0;
 }
+p {
+  margin: 0;
+}
 .alltask-content{
     display: flex;
     position: relative;
@@ -25,8 +28,13 @@ body{
     box-shadow: 0 4px 13px 4px rgba(0, 0, 0, 0.08);
     height: 100%;
 }
+.top-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
 .task-list{
-    padding: 34px 34px 0px 34px;
+    padding: 34px;
 }
 .task-control{
     background-color: #F8F8F8;
@@ -39,16 +47,14 @@ body{
     font-size: 36px;
     color: #211551;
 }
-.collapsed{
-  background-color: #F8F8F8;
-  font-weight: bold;
+.task-content strong {
+  font-size: 18px;
 }
-.accordion-body {
-  height: 84.2vh;
+.task-content p {
+  font-size: 14px;
 }
-.accordion-button:not(.collapsed) {
-  background-color: white;
-  color: black;
+.task-content > .dueto-task-container > p {
+  font-size: 14px;
 }
 .add-button{
   margin-top: 12px;
@@ -56,11 +62,20 @@ body{
   margin-right: 24px;
 }
 .all-task-list{
-  height: 73vh;
+  max-height: 100%;
+  flex: 1 1;
   overflow-y: auto;
+  padding: 34px;
 }
-.group-list-all-task{
+/* .group-list-all-task{
   margin: 29px 34px 0px 34px;
+} */
+.list-group-flush>.list-group-item:last-child {
+  border-bottom: 1px solid #D7D5D5;
+}
+.list-group-item {
+  padding: 16px;
+  border-bottom: 1px solid #D7D5D5;
 }
 .list-group-action{
   overflow: auto;
@@ -69,12 +84,21 @@ body{
   display: flex;
 }
 .dueto-task-container{
+  margin-top: 5px;
   display: flex;
+  align-items: center;
 }
 .dueto-task-container p{
   margin-bottom: 0px;
   margin-left: 10px;
   color: #D1453B;
+}
+.sort-button {
+  border-radius: 5px;
+  background-color: transparent;
+}
+.sort-button:hover {
+  background-color: #f3f3f3;
 }
 .task-icon-checkbox-container{
   margin-right: 16px;
@@ -197,4 +221,68 @@ label {
   margin:0;
   align-items: center;
   display: flex;
+}
+
+.accor-container {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  box-shadow: -2px 0 20px rgb(0 0 0 / 4%);
+}
+
+.accor-container .accor-list {
+  transition: .3s all ease;
+}
+
+.accor-container .accor-list .accor-header {
+  color: #000;
+  font-weight: 700;
+  font-size: 24px;
+  text-decoration: none;
+  padding: 24px;
+  background-color: #F8F8F8;
+}
+
+.accor-container .accor-list .accor-header span {
+  font-weight: 400;
+  color: #808080;
+  font-size: 16px;
+  margin-left: 10px;
+  opacity: 0;
+  transition: .3s all ease;
+}
+
+.accor-container .accor-list.active .accor-header {
+  background: #fff;
+  border-bottom: 1px solid #D7D5D5;
+}
+
+.accor-container .accor-list.active .accor-header span {
+  opacity: 1;
+}
+
+.accor-container .wrap {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100%;
+  color: #fff;
+}
+
+.accor-container .wrap .accor-list-content {
+  display: none;
+  padding: 20px;
+}
+
+.accor-container .accor-list.active {
+  display: flex;
+  flex: 1 1 auto;
+}
+
+.accor-container .accor-list.active .wrap .accor-list-content {
+  display: block;
 }
