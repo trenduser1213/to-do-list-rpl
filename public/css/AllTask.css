@@ -1,0 +1,200 @@
+body{
+    margin: 0;
+}
+.alltask-content{
+    display: flex;
+    position: relative;
+    height: 100vh;
+}
+.left-side{
+    padding: 30px;
+    width: 70%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('/asset/img/background.svg');
+}
+.right-side{
+    width: 30%;
+}
+.list-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 13px 4px rgba(0, 0, 0, 0.08);
+    height: 100%;
+}
+.task-list{
+    padding: 34px 34px 0px 34px;
+}
+.task-control{
+    background-color: #F8F8F8;
+    border-radius: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+.task-list h1{
+    font-weight: bold;
+    font-size: 36px;
+    color: #211551;
+}
+.collapsed{
+  background-color: #F8F8F8;
+  font-weight: bold;
+}
+.accordion-body {
+  height: 84.2vh;
+}
+.accordion-button:not(.collapsed) {
+  background-color: white;
+  color: black;
+}
+.add-button{
+  margin-top: 12px;
+  margin-bottom: 12px;
+  margin-right: 24px;
+}
+.all-task-list{
+  height: 73vh;
+  overflow-y: auto;
+}
+.group-list-all-task{
+  margin: 29px 34px 0px 34px;
+}
+.list-group-action{
+  overflow: auto;
+}
+.task-container{
+  display: flex;
+}
+.dueto-task-container{
+  display: flex;
+}
+.dueto-task-container p{
+  margin-bottom: 0px;
+  margin-left: 10px;
+  color: #D1453B;
+}
+.task-icon-checkbox-container{
+  margin-right: 16px;
+}
+.sampah-icon{
+  margin-left: 20px;
+}
+.container-checkbox {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.container-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1em;
+  width: 1em;
+  background-color: #eee;
+  border-radius:50px;
+}
+.container-checkbox:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+.container-checkbox input:checked ~ .checkmark {
+  background-color: #34A853;
+}
+.priority-task{
+  background-color: #D1453B;
+  border-radius: 10px;
+  padding: 18px;
+}
+.accordion-button:not(.collapsed)::after{
+  display: none;
+}
+.late-task{
+  background-color: #FF4437;
+  padding: 7px 12px 7px 12px;
+  border-radius: 10px;
+}
+.item-control{
+    padding: 8px 12px 8px 12px;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ced4da;
+    cursor: pointer;
+}
+
+.item-control-container{
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+.bi-pencil{
+    cursor: pointer;
+}
+.bi-x-circle{
+    cursor: pointer;
+}
+.accordion-search-action{
+  display: flex;
+}
+#accourdion-action-two{
+  display: none;
+}
+#mydate{
+    
+    border: none;
+}
+#priority-input{
+    display: none;
+}
+#description-input{
+    display: none;
+}
+
+label {
+  display: inline-block;
+  position: relative;
+  line-height: 0;
+}
+#datepicker {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  overflow: hidden;
+  cursor: pointer;
+}
+#datepicker::-webkit-calendar-picker-indicator {
+  position: absolute;
+  top: -150%;
+  left: -150%;
+  width: 300%;
+  height: 300%;
+  cursor: pointer;
+}
+#datepicker:hover  {
+  background-color: silver;
+}
+.sort-item-container{
+  color:#808080;
+  font-size:12px;
+  cursor:pointer;
+  margin:0;
+  align-items: center;
+  display: flex;
+}
