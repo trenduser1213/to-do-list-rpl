@@ -21,16 +21,18 @@
         <form>
           <div class=" form">
             <h1 class="h1 mb-3 font-monospace">Register</h1>
-            <label class="form-label mt-4">E-mail</label>
-            <input type="email" class="form-control" required autofocus>
-            <label for="" class="form-label mt-2">Password</label>
-            <input type="password" class="form-control" required>
-            <label for="" class="form-label mt-2">Name</label>
-            <input type="text" class="form-control" required>
-            <label for="" class="form-label mt-2">Date of birth</label>
-            <input type="date" class="form-control" required>
-            <button class=" text-light form-control mt-3" style="background-color: #643FDB;">Log In</button>
-            <div class="row mt-1">
+            <label for="email" class="form-label mt-4">E-mail</label>
+            <input type="email" class="form-control" name="email" id="email" required autofocus>
+            <label for="password" class="form-label mt-4">Password</label>
+            <input type="password" class="form-control" name="password" id="password" required>
+            <label for="confirmPassword" class="form-label mt-4">Confirm Password</label>
+            <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" required>
+            <label for="name" class="form-label mt-4">Name</label>
+            <input type="text" class="form-control" name="name" id="name" required>
+            <label for="birth" class="form-label mt-4">Date of birth</label>
+            <input type="date" class="form-control" name="birth" id="birth" required>
+            <button class=" text-light form-control mt-4" style="background-color: #643FDB;">Log In</button>
+            <div class="row my-3">
                 <div class="col-lg-5"><hr></div>
                 <div class="col-lg-2 text-center">
                   <p>or</p>
@@ -38,10 +40,10 @@
                 <div class="col-lg-5"><hr></div>
             </div>
             
-            <button class="shadow-sm form-control mt-2"><img src="assetLoginRegis/icon/google.svg" alt="" height="20px"> Log In With Google</button>
-            <hr>
+            <a class="text-center text-decoration-none shadow-sm form-control p-2" style="cursor: pointer;" href=""><img src="assetLoginRegis/icon/google.svg" alt="" height="20px"> Log In With Google</a>
+            <hr class="my-4">
             <div class="text-center ">
-              <label>Already signed up?  </label> <a href="#" class=" link-success">Go to login</a>
+              <label>Already signed up? <a href="#">Go to login</a></label>
             </div>
           </div>
         </form>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,9 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('AllTask.AllTask');
 });
-Route::get('/login', function () {
-    return view('login');
-});
-Route::get('/regis', function () {
+Route::get('/login', [LoginController::class, 'index']);
+Route::get('/registrasi', function () {
     return view('regis');
 });

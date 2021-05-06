@@ -1,19 +1,20 @@
+p {
+    margin-bottom: 0;
+}
+
 .bd{
     background-color: #dddddd;
 }
 .login-box{
-    margin-top: 65px;
     width: 520px;
-    height: 520px;
     background: #ffffff;
-    /* color: #fff; */
     top: 50%;
     left: 50%;
     position: absolute;
     box-sizing: border-box;
     padding: 30px;
     transform: translate(-50%, -50%);
-    box-shadow: #080808;
+    box-shadow: 0 2px 16px rgba(8, 8, 8, .4);
     border-radius: 1%;
 }
 @media screen and (max-width: 600px) {
@@ -75,19 +76,14 @@
     z-index: -1;
 }
 .regis-box{
-    margin-top: 65px;
     width: 520px;
-    height: 650px;
     background: #ffffff;
-    /* color: #fff; */
     top: 50%;
-    bottom: 50%;
     left: 50%;
     position: absolute;
     box-sizing: border-box;
     padding: 30px;
     transform: translate(-50%, -50%);
-    box-shadow: #080808;
     border-radius: 1%;
 }
 @media screen and (max-width: 600px) {
