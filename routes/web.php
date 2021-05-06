@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,4 @@ Route::get('/', function () {
     return view('AllTask.AllTask');
 });
 Route::get('/login', [LoginController::class, 'index']);
-Route::get('/registrasi', function () {
-    return view('regis');
-});
+Route::get('/register', [RegisterController::class, 'index']);
