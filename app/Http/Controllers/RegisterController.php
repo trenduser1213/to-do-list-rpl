@@ -21,5 +21,7 @@ class RegisterController extends Controller
             'name' => $registerRequest->name,
             'birth' => $registerRequest->birth,
         ]);
+
+        return redirect('register');
     }
 }

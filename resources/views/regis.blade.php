@@ -18,35 +18,61 @@
     <div class="hias"></div>
     <div class="container">
       <div class="regis-box shadow-lg">
-        <form>
+        <form action="/register/create" method="post">
+          @csrf
           <div class=" form">
             <h1 class="h1 mb-3 font-monospace">Register</h1>
             <label for="email" class="form-label mt-4">E-mail</label>
             <input type="email" class="form-control" name="email" id="email" required autofocus>
+            @error('email')
+              <div class="text-danger mt-2">
+                {{ ucfirst($message) }}
+              </div>
+            @enderror
             <label for="password" class="form-label mt-4">Password</label>
             <input type="password" class="form-control" name="password" id="password" required>
+            @error('password')
+              <div class="text-danger mt-2">
+                {{ ucfirst($message) }}
+              </div>
+            @enderror
             <label for="confirmPassword" class="form-label mt-4">Confirm Password</label>
             <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" required>
+            @error('confirmPassword')
+              <div class="text-danger mt-2">
+                {{ ucfirst($message) }}
+              </div>
+            @enderror
             <label for="name" class="form-label mt-4">Name</label>
             <input type="text" class="form-control" name="name" id="name" required>
+            @error('name')
+              <div class="text-danger mt-2">
+                {{ ucfirst($message) }}
+              </div>
+            @enderror
             <label for="birth" class="form-label mt-4">Date of birth</label>
             <input type="date" class="form-control" name="birth" id="birth" required>
-            <button class=" text-light form-control mt-4" style="background-color: #643FDB;">Log In</button>
-            <div class="row my-3">
-                <div class="col-lg-5"><hr></div>
-                <div class="col-lg-2 text-center">
-                  <p>or</p>
-                </div>
-                <div class="col-lg-5"><hr></div>
-            </div>
-            
-            <a class="text-center text-decoration-none shadow-sm form-control p-2" style="cursor: pointer;" href=""><img src="assetLoginRegis/icon/google.svg" alt="" height="20px"> Log In With Google</a>
-            <hr class="my-4">
-            <div class="text-center ">
-              <label>Already signed up? <a href="#">Go to login</a></label>
-            </div>
+            @error('birth')
+              <div class="text-danger mt-2">
+                {{ ucfirst($message) }}
+              </div>
+            @enderror
+            <button type="submit" class=" text-light form-control mt-4" style="background-color: #643FDB;">Register</button>
           </div>
         </form>
+        <div class="row my-3">
+          <div class="col-lg-5"><hr></div>
+          <div class="col-lg-2 text-center">
+            <p>or</p>
+          </div>
+          <div class="col-lg-5"><hr></div>
+        </div>
+        
+        <a class="text-center text-decoration-none shadow-sm form-control p-2" style="cursor: pointer;" href=""><img src="assetLoginRegis/icon/google.svg" alt="" height="20px"> Log In With Google</a>
+        <hr class="my-4">
+        <div class="text-center ">
+          <label>Already signed up? <a href="#">Go to login</a></label>
+        </div>
       </div>
     </div>
     <div class="hiasbawahkiri"></div>

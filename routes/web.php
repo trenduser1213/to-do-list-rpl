@@ -18,5 +18,11 @@ use App\Http\Controllers\RegisterController;
 Route::get('/', function () {
     return view('AllTask.AllTask');
 });
+
+Route::prefix('register')->group(function() {
+    Route::get('/', [RegisterController::class, 'index']);
+    Route::post('/create', [RegisterController::class, 'registerVerification']);
+    
+});
+
 Route::get('/login', [LoginController::class, 'index']);
-Route::get('/register', [RegisterController::class, 'index']);
