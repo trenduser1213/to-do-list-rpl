@@ -13,6 +13,29 @@
     <title>All Task</title>
 </head>
 <body>
+    <div class="header-container d-flex w-100 py-2 px-4 justify-content-between align-items-center">
+      <div>
+        <img src="{{asset('asset/img/ido-logo.svg')}}" width="90%"/>
+      </div>
+      <div class="d-flex">
+        <i class="bi bi-bell px-3" style="margin: auto;color:rgba(0, 0, 0, 0.54);font-size:24px"></i>
+        <div class="dropdown">
+          <p class="py-2 px-3" style="border-radius: 50%;background-color: #2FAF3C;color:white; cursor:pointer" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">F</p>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li>
+              <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button class="dropdown-item d-flex align-items-center" type="submit" style="color:#D1453B">
+                  <i class="bi bi-box-arrow-right pe-2" style="font-size: 18px"></i> Log Out
+                </button>
+             </form>
+          </li>
+          </ul>
+        </div>
+        
+      </div>
+    </div>
     <div class="alltask-content">
         <div class="left-side">
             <div class="list-container">
@@ -41,10 +64,7 @@
                       <div class="task-container justify-content-between">
                         <div class="tesk-text-container d-flex align-items-center">
                           <div class="task-icon-checkbox-container">
-                            <label class="container-checkbox">
-                              <input type="checkbox">
-                              <span class="checkmark"></span>
-                            </label>
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                           </div>
                           <div class="task-content">
                             <strong>Meeting rpl</strong>
@@ -148,13 +168,7 @@
                         <div class="task-container priority-task">
                           <div class="tesk-text-container d-flex">
                             <div class="task-icon-checkbox-container d-flex align-items-center">
-                              <label class="container-checkbox">
-                                {{-- input set to checked
-                                  <input type="checkbox" checked="checked">
-                                    --}}
-                                <input type="checkbox"/>
-                                <span class="checkmark"></span>
-                              </label>
+                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                             </div>
                             <div>
                               <strong style="color:white">Meeting rpl</strong>
@@ -175,10 +189,7 @@
                         <div class="task-container justify-content-between">
                           <div class="tesk-text-container d-flex align-items-center">
                             <div class="task-icon-checkbox-container">
-                              <label class="container-checkbox">
-                                <input type="checkbox">
-                                <span class="checkmark"></span>
-                              </label>
+                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                             </div>
                             <div class="task-content">
                               <strong>Meeting rpl</strong>
