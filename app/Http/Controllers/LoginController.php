@@ -12,7 +12,8 @@ class LoginController extends Controller
         return view('login');
     }
 
-    public function loginVerification() {
+    public function loginVerification() 
+    {
 
     }
 }
