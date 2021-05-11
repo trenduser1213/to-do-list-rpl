@@ -9,11 +9,6 @@ use App\Http\Requests\user\RegisterRequest;
 
 class RegisterController extends Controller
 {
-    public function index() 
-    {
-        return view('regis');
-    }
-
     public function registerVerification(RegisterRequest $registerRequest)
     {
         User::create([
@@ -23,6 +18,6 @@ class RegisterController extends Controller
             'tanggal_lahir' => $registerRequest->birth,
         ]);
 
-        return redirect('register');
+        return redirect('/login');
     }
 }
