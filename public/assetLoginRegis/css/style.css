@@ -2,93 +2,65 @@ p {
     margin-bottom: 0;
 }
 
-.bd{
+.bd {
     background-color: #dddddd;
 }
-.login-box{
+
+.background-overlay {
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    top: 0;
+    position: fixed;
+}
+
+.login-container {
+    width: 100%;
+    min-height: 100vh;
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box {
     width: 520px;
     background: #ffffff;
-    top: 50%;
-    left: 50%;
-    position: absolute;
     box-sizing: border-box;
     padding: 30px;
-    transform: translate(-50%, -50%);
     box-shadow: 0 2px 16px rgba(8, 8, 8, .4);
     border-radius: 1%;
 }
+
 @media screen and (max-width: 600px) {
     .login-box{
         width: 420px;
-        height: 620px;
     }
 }
+
 .forget{
     text-align: center;
 }
-.hias{
-    width: 200px;
-    height: 200px;
-    box-sizing: border-box;
-    background: #4D9FFF;
-    left: 100%;
-    right: 0%;
-    border-bottom-left-radius:100%;
-    border-top-left-radius: 0% ;
-    border-bottom-right-radius: 0%;
-    border-top-right-radius: 0%;
-    position: sticky;
-}
+
 .or{
     margin-bottom: -25px;
     background: #ffffffbb;
     
 }
-.hiasbawahkanan{
-    width: 300px;
-    height: 300px;
-    box-sizing: border-box;
-    background: #7B61FF;
-    left: 130%;
-    right: 0%;
-    top: 100;
-    border-bottom-left-radius: 100%;
-    border-top-left-radius: 100% ;
-    border-bottom-right-radius: 0%;
-    border-top-right-radius: 100%;
-    position: sticky;
-    z-index: -1;
-}
-.hiasbawahkiri{
-    width: 300px;
-    height: 300px;
-    box-sizing: border-box;
-    background: #FBBC05;
-    left: 0%;
-    right: 100%;
-    top: 100%;
-    padding-bottom: 0%;
-    border-bottom-left-radius: 0%;
-    border-top-left-radius: 0% ;
-    border-bottom-right-radius: 0%;
-    border-top-right-radius: 100%;
-    position: sticky;
-    z-index: -1;
-}
+
 .regis-box{
     width: 520px;
     background: #ffffff;
-    top: 50%;
-    left: 50%;
-    position: absolute;
     box-sizing: border-box;
     padding: 30px;
-    transform: translate(-50%, -50%);
+    box-shadow: 0 2px 16px rgba(8, 8, 8, .4);
     border-radius: 1%;
 }
+
 @media screen and (max-width: 600px) {
     .regis-box{
         width: 420px;
-        height: 720px;
     }
 }

@@ -15,8 +15,8 @@
     <title>Register</title>
   </head>
   <body class="bd">
-    <div class="hias"></div>
-    <div class="container">
+    <div class="background-overlay" style="background-image: url({{ asset('asset/img/background-overlay.jpg') }})"></div>
+    <div class="login-container">
       <div class="regis-box shadow-lg">
         <form action="/register/create" method="post">
           @csrf
@@ -60,23 +60,21 @@
             <button type="submit" class=" text-light form-control mt-4" style="background-color: #643FDB;">Register</button>
           </div>
         </form>
-        <div class="row my-3">
-          <div class="col-lg-5"><hr></div>
-          <div class="col-lg-2 text-center">
+        <div class="row my-4">
+          <div class="col-5"><hr></div>
+          <div class="col-2 text-center">
             <p>or</p>
           </div>
-          <div class="col-lg-5"><hr></div>
+          <div class="col-5"><hr></div>
         </div>
         
         <a class="text-center text-decoration-none shadow-sm form-control p-2" style="cursor: pointer;" href=""><img src="assetLoginRegis/icon/google.svg" alt="" height="20px"> Log In With Google</a>
         <hr class="my-4">
         <div class="text-center ">
-          <label>Already signed up? <a href="#">Go to login</a></label>
+          <label>Already signed up? <a href="/login">Login</a></label>
         </div>
       </div>
     </div>
-    <div class="hiasbawahkiri"></div>
-    <div class="hiasbawahkanan"></div>
  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
     <script src="assetLoginRegis/js/bootstrap.js"></script>
