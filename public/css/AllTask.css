@@ -1,10 +1,16 @@
 p {
   margin: 0;
 }
+.header-container{
+  background-color: white;
+  box-shadow: 0 4px 13px 4px rgba(0, 0, 0, 0.08);
+  z-index: 1;
+  position: relative;
+}
 .alltask-content{
     display: flex;
     position: relative;
-    height: 100vh;
+    height: 92vh;
 }
 .left-side{
     padding: 30px;
@@ -103,39 +109,16 @@ p {
 .sampah-icon{
   margin-left: 20px;
 }
-.container-checkbox {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 20px;
-  cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+.form-check-input[type="checkbox"] {
+  border-radius: 50%;
 }
-.container-checkbox input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 1em;
-  width: 1em;
-  background-color: #eee;
-  border-radius:50px;
-}
-.container-checkbox:hover input ~ .checkmark {
-  background-color: #ccc;
-}
-.container-checkbox input:checked ~ .checkmark {
+.form-check-input:checked {
   background-color: #34A853;
+  border-color: #34A853;
+}
+.form-check-input {
+  width: 20px;
+  height: 20px;
 }
 .priority-task{
   background-color: #D1453B;
