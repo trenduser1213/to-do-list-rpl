@@ -19,7 +19,7 @@ class CreateAgendasTable extends Migration
             $table->string('nama_agenda');
             $table->timestamp('tenggat_waktu');
             $table->text('deskripsi');
-            $table->string('label');
+            $table->string('label')->nullable();
             $table->integer('durasi');
             $table->string('status');
             $table->integer('skala_prioritas');

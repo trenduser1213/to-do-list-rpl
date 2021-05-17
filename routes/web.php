@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TaskController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +23,8 @@ Auth::routes();
 Route::prefix('register')->group(function() {
     Route::post('/create', [RegisterController::class, 'registerVerification']);
 });
+
+Route::post('store', [TaskController::class, 'store']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

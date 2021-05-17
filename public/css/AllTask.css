@@ -1,16 +1,28 @@
 p {
   margin: 0;
 }
+.body-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.header-container{
+  background-color: white;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, .08);
+  z-index: 4;
+  position: relative;
+}
 .alltask-content{
     display: flex;
     position: relative;
-    height: 100vh;
+    flex: 1 1;
 }
 .left-side{
     padding: 30px;
     width: 70%;
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
     background-image: url('/asset/img/background.svg');
 }
 .right-side{
@@ -53,10 +65,16 @@ p {
 .task-content > .dueto-task-container > p {
   font-size: 14px;
 }
-.add-button{
+.add-button {
   margin-top: 12px;
   margin-bottom: 12px;
   margin-right: 24px;
+  background-color: #0067c7;
+  color: #fff;
+}
+.add-button:hover {
+  background-color: #00488b;
+  color: #fff;
 }
 .all-task-list{
   max-height: 100%;
@@ -103,39 +121,17 @@ p {
 .sampah-icon{
   margin-left: 20px;
 }
-.container-checkbox {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 20px;
+.form-check-input[type="checkbox"] {
+  border-radius: 50%;
+}
+.form-check-input:checked {
+  background-color: #0074E2;
+  border-color: #0074E2;
+}
+.form-check-input {
+  width: 20px;
+  height: 20px;
   cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-.container-checkbox input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 1em;
-  width: 1em;
-  background-color: #eee;
-  border-radius:50px;
-}
-.container-checkbox:hover input ~ .checkmark {
-  background-color: #ccc;
-}
-.container-checkbox input:checked ~ .checkmark {
-  background-color: #34A853;
 }
 .priority-task{
   background-color: #D1453B;
@@ -158,7 +154,16 @@ p {
     border-color: #ced4da;
     cursor: pointer;
 }
-
+.accor-header-container {
+  position: relative;
+  display: flex;
+}
+.accor-dropdown {
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translate(0, -50%);
+}
 .item-control-container{
     margin-top: 12px;
     margin-bottom: 12px;
@@ -241,6 +246,8 @@ label {
   text-decoration: none;
   padding: 24px;
   background-color: #F8F8F8;
+  width: 100%;
+  position: relative;
 }
 
 .accor-container .accor-list .accor-header span {
@@ -252,12 +259,23 @@ label {
   transition: .3s all ease;
 }
 
+.accor-container .accor-list .accor-dropdown {
+  z-index: -1;
+  opacity: 0;
+  transition: .3s all ease;
+}
+
 .accor-container .accor-list.active .accor-header {
   background: #fff;
   border-bottom: 1px solid #D7D5D5;
 }
 
 .accor-container .accor-list.active .accor-header span {
+  opacity: 1;
+}
+
+.accor-container .accor-list.active .accor-dropdown {
+  z-index: 3;
   opacity: 1;
 }
 
