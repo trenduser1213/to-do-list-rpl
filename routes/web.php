@@ -23,32 +23,8 @@ Route::prefix('register')->group(function() {
     Route::post('/create', [RegisterController::class, 'registerVerification']);
 });
 
-Route::get('/', [TaskController::class, 'index'])->middleware('auth');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('/', 'TodoController@index');
-/**
- *  Show create todo form yang pop up
- */
-Route::get('/todos/create', 'TodoController@create');
-
-/**
- * Nambah Todo
- */
-Route::post('/todos','TodoController@store');
-
-/**
- * Show edit todo
- */
-Route::get('todos/{todo}/edit', 'TodoController@edit');
-
-/**
- * update todo
- */
-Route::put('todos/{todo}', 'TodoController@update');
-
-/**
- * Delete Todo
- */
-Route::get('/todos/{todo}/delete', 'TodoController@delete');
+Route::get('/', function () {
+    return view('agenda');
+});

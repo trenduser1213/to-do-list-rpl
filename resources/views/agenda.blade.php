@@ -74,7 +74,13 @@
               </div>
             </div>
         </div>
+
+        
         <!-- Modal -->
+
+        <form action="/agenda" method="POST" class="form-horizontal">
+            {{ csrf_field() }}
+
         <div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
@@ -87,11 +93,11 @@
               </div>
             --}}
               <div class="modal-body">
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Activity Name ...">
+                <input type="text" class="form-control" name="nama_agenda" id="exampleFormControlInput1" placeholder="Activity Name ...">
                 {{-- action control --}}
                 <div class="d-flex item-control-container">
                   <label onclick="dateClickListener()" class="p-0" id="date-container">
-                    <input type="date" id="datepicker">
+                    <input type="date" id="datepicker" name="tenggat_waktu">
                     <div class="item-control d-flex align-items-center h-100">
                       <i class="bi bi-calendar3" id="date-icon"></i><p style="padding-left:5px;" id="date-text">Today</p>
                     </div>
@@ -103,7 +109,7 @@
                     <i class="bi bi-list-ul" id="priority-icon"></i><p style="padding-left:5px;" id="priority-text">Priority</p>
                   </div>
                 </div>
-                <input type="text" class="form-control" placeholder="Description ..." id="description-input">
+                <input type="text" class="form-control" placeholder="Description ..." name="skala_prioritas" id="description-input">
                 {{--input dropdown--}}
                 <select class="form-select" aria-label="Default select example" id="priority-input">
                   <option selected>Open this select menu</option>
@@ -120,6 +126,7 @@
             </div>
           </div>
         </div>
+        </form>
         <!-- Modal -->
         
         <div class="right-side">
