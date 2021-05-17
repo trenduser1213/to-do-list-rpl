@@ -91,7 +91,7 @@
                 {{-- action control --}}
                 <div class="d-flex item-control-container">
                   <label onclick="dateClickListener()" class="p-0" id="date-container">
-                    <input type="date" id="datepicker">
+                    <input type="datetime-local" id="datepicker">
                     <div class="item-control d-flex align-items-center h-100">
                       <i class="bi bi-calendar3" id="date-icon"></i><p style="padding-left:5px;" id="date-text">Today</p>
                     </div>
@@ -103,7 +103,7 @@
                     <i class="bi bi-list-ul" id="priority-icon"></i><p style="padding-left:5px;" id="priority-text">Priority</p>
                   </div>
                 </div>
-                <input type="text" class="form-control" placeholder="Description ..." id="description-input">
+                <textarea type="text" class="form-control" placeholder="Description ..." id="description-input" rows="5"></textarea>
                 {{--input dropdown--}}
                 <select class="form-select" aria-label="Default select example" id="priority-input">
                   <option selected>Open this select menu</option>
