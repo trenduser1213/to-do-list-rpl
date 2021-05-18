@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TaskController;
 
@@ -23,10 +23,15 @@ Route::prefix('register')->group(function() {
     Route::post('/create', [RegisterController::class, 'registerVerification']);
 });
 
+Route::post('/login',[LoginController::class,'login']);
+
+Route::get('/',[LoginController::class,'showLoginForm']);
+
 Route::post('store', [TaskController::class, 'store']);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/', function () {
-    return view('agenda');
+Route::prefix('home')->name('home.')->middleware('auth')->group(function(){
+    Route::get('/',[TaskController::class,'showAllTask'])->name('dashboard');
+    Route::post('add-data',[TaskController::class,'addAgendas'])->name('adddata');
 });

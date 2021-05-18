@@ -34,7 +34,6 @@
           </li>
           </ul>
         </div>
-        
       </div>
     </div>
     <div class="alltask-content">
@@ -107,38 +106,43 @@
                 </button>
               </div>
             --}}
+            <form method="post" action="home\add-data">
+              @csrf
               <div class="modal-body">
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Activity Name ...">
-                {{-- action control --}}
-                <div class="d-flex item-control-container">
-                  <label onclick="dateClickListener()" class="p-0" id="date-container">
-                    <input type="datetime-local" id="datepicker">
-                    <div class="item-control d-flex align-items-center h-100">
-                      <i class="bi bi-calendar3" id="date-icon"></i><p style="padding-left:5px;" id="date-text">Today</p>
+
+                  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Activity Name ..." name="activity">
+                  {{-- action control --}}
+                  <div class="d-flex item-control-container">
+                    <label onclick="dateClickListener()" class="p-0" id="date-container">
+                      <input type="datetime-local" id="datepicker" name="dateandtime">
+                      <div class="item-control d-flex align-items-center h-100">
+                        <i class="bi bi-calendar3" id="date-icon"></i><p style="padding-left:5px;" id="date-text">Today</p>
+                      </div>
+                    </label>
+                    <div class="d-flex item-control" style="margin-left: 12px" id="description-container" onclick="descriptionClickListener()">
+                      <i class="bi bi-blockquote-right" id="description-icon"></i><p style="padding-left:5px;" id="description-text">Description</p>
                     </div>
-                  </label>
-                  <div class="d-flex item-control" style="margin-left: 12px" id="description-container" onclick="descriptionClickListener()">
-                    <i class="bi bi-blockquote-right" id="description-icon"></i><p style="padding-left:5px;" id="description-text">Description</p>
+                    <div class="d-flex item-control" style="margin-left: 12px" id="priority-container" onclick="priorityClickListener()">
+                      <i class="bi bi-list-ul" id="priority-icon"></i><p style="padding-left:5px;" id="priority-text">Priority</p>
+                    </div>
                   </div>
-                  <div class="d-flex item-control" style="margin-left: 12px" id="priority-container" onclick="priorityClickListener()">
-                    <i class="bi bi-list-ul" id="priority-icon"></i><p style="padding-left:5px;" id="priority-text">Priority</p>
-                  </div>
-                </div>
-                <textarea type="text" class="form-control" placeholder="Description ..." id="description-input" rows="5"></textarea>
+                  <textarea type="text" class="form-control" placeholder="Description ..." id="description-input" rows="5" name="description"></textarea>
+                  {{--input dropdown--}}
+                  <select class="form-select" aria-label="Default select example" id="priority-input" name="priority">
+                    <option selected>Open this select menu</option>
+                    <option value="low">Low</option>
+                    <option value="normal">Normal</option>
+                    <option value="high">High</option>
+                  </select>
                 {{--input dropdown--}}
-                <select class="form-select" aria-label="Default select example" id="priority-input">
-                  <option selected>Open this select menu</option>
-                  <option value="low">Low</option>
-                  <option value="normal">Normal</option>
-                  <option value="high">High</option>
-                </select>
-                {{--input dropdown--}}
+               
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
               </div>
             </div>
+          </form>
           </div>
         </div>
         <!-- Modal -->
