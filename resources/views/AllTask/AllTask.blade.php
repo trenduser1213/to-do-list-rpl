@@ -97,7 +97,6 @@
                       </div>
                     </li>
                   @endforeach
-
                 @else
                   <h1>No Task</h1>
                 @endif
