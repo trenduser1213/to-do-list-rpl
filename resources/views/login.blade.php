@@ -21,7 +21,7 @@
         <form action="" method="post">
           @csrf
           <div class="form">
-            <h1 class="h1 mb-3 font-monospace">Log In</h1>
+            <h1 class="h1 mb-3">Log In</h1>
             <label for="email" class="form-label mt-4">E-mail</label>
             @error('email')
               <div class="text-danger mt-2">
