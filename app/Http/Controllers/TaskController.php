@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TaskRequest;
 use App\Models\Agenda;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
