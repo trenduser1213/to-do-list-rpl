@@ -65,37 +65,42 @@
               {{-- list --}}
               <ul class="list-group list-group-flush group-list-all-task">
                 {{-- list item --}}
-                @foreach ($agendas as $agenda)
-                  <li class="list-group-item">
-                    <div class="task-container justify-content-between">
-                      <div class="tesk-text-container d-flex align-items-center">
-                        <div class="task-icon-checkbox-container">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                @if ($agendas->count() > 0)
+                  @foreach ($agendas as $agenda)
+                    <li class="list-group-item">
+                      <div class="task-container justify-content-between">
+                        <div class="tesk-text-container d-flex align-items-center">
+                          <div class="task-icon-checkbox-container">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                          </div>
+                          <div class="task-content">
+                            <strong>{{ $agenda->nama_agenda }}</strong>
+                            <p style="color:#808080">{{ $agenda->deskripsi }}</p>
+                            <div class="dueto-task-container">
+                              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 0C4.03732 0 0 4.03732 0 9C0 13.9627 4.03732 18 9 18C13.9627 18 18 13.9627 18 9C18 4.03732 13.9627 0 9 0ZM9 16.0328C5.12202 16.0328 1.96721 12.878 1.96721 9C1.96721 5.12221 5.12202 1.96721 9 1.96721C12.878 1.96721 16.0328 5.12221 16.0328 9C16.0328 12.878 12.878 16.0328 9 16.0328Z" fill="#D1453B"/>
+                                <path d="M9.77872 9.01078V5.23868C9.77872 4.8175 9.43742 4.4762 9.01639 4.4762C8.59524 4.4762 8.25391 4.8175 8.25391 5.23868V9.25437C8.25391 9.26636 8.25686 9.27761 8.25744 9.2896C8.24741 9.49693 8.31884 9.70744 8.47718 9.86581L11.3169 12.7053C11.6147 13.0031 12.0975 13.0031 12.3951 12.7053C12.6927 12.4074 12.6929 11.9247 12.3951 11.627L9.77872 9.01078Z" fill="#D1453B"/>
+                              </svg>
+                              <p>{{ $agenda->tenggat_waktu }}</p>
+                            </div>
+                          </div>
                         </div>
-                        <div class="task-content">
-                          <strong>{{ $agenda->nama_agenda }}</strong>
-                          <p style="color:#808080">{{ $agenda->deskripsi }}</p>
-                          <div class="dueto-task-container">
-                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M9 0C4.03732 0 0 4.03732 0 9C0 13.9627 4.03732 18 9 18C13.9627 18 18 13.9627 18 9C18 4.03732 13.9627 0 9 0ZM9 16.0328C5.12202 16.0328 1.96721 12.878 1.96721 9C1.96721 5.12221 5.12202 1.96721 9 1.96721C12.878 1.96721 16.0328 5.12221 16.0328 9C16.0328 12.878 12.878 16.0328 9 16.0328Z" fill="#D1453B"/>
-                              <path d="M9.77872 9.01078V5.23868C9.77872 4.8175 9.43742 4.4762 9.01639 4.4762C8.59524 4.4762 8.25391 4.8175 8.25391 5.23868V9.25437C8.25391 9.26636 8.25686 9.27761 8.25744 9.2896C8.24741 9.49693 8.31884 9.70744 8.47718 9.86581L11.3169 12.7053C11.6147 13.0031 12.0975 13.0031 12.3951 12.7053C12.6927 12.4074 12.6929 11.9247 12.3951 11.627L9.77872 9.01078Z" fill="#D1453B"/>
-                            </svg>
-                            <p>{{ $agenda->tenggat_waktu }}</p>
+                        <div class="task-action d-flex align-items-center">
+                          <div class="edit-button" data-id="{{ $agenda->id }}">
+                            <i class="bi bi-pencil" style="color:#808080" data-toggle="modal" data-target="#editTaskModal"></i>
+                          </div>
+                          
+                          <div class="delete-button" data-id="{{ $agenda->id }}">
+                            <i class="bi bi-x-circle sampah-icon" style="color:#808080" data-bs-toggle="modal" data-bs-target="#deleteModal"></i>
                           </div>
                         </div>
                       </div>
-                      <div class="task-action d-flex align-items-center">
-                        <div class="edit-button" data-id="{{ $agenda->id }}">
-                          <i class="bi bi-pencil" style="color:#808080" data-toggle="modal" data-target="#editTaskModal"></i>
-                        </div>
-                        
-                        <div class="delete-button" data-id="{{ $agenda->id }}">
-                          <i class="bi bi-x-circle sampah-icon" style="color:#808080" data-bs-toggle="modal" data-bs-target="#deleteModal"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                @endforeach
+                    </li>
+                  @endforeach
+
+                @else
+                  <h1>No Task</h1>
+                @endif
                 {{-- list item --}}
               </ul>
               {{-- end list --}}
