@@ -13,7 +13,8 @@
     <title>All Task</title>
 </head>
 <body>
-    <div class="header-container d-flex w-100 py-2 px-4 justify-content-between align-items-center">
+  <div class="body-container">
+    <div class="header-container d-flex w-100 p-4 justify-content-between align-items-center">
       <div>
         <img src="{{asset('asset/img/ido-logo.svg')}}" width="90%"/>
       </div>
@@ -90,7 +91,7 @@
                 </div>
               </div>
               <div class="task-control">
-                <button class="btn btn-success add-button" data-toggle="modal" data-target="#exampleModalCenter"><i class="bi bi-plus-circle-fill"></i> Add New Task</button>
+                <button class="btn add-button" data-toggle="modal" data-target="#exampleModalCenter"><i class="bi bi-plus-circle-fill"></i> Add New Task</button>
               </div>
             </div>
         </div>
@@ -111,7 +112,7 @@
                 {{-- action control --}}
                 <div class="d-flex item-control-container">
                   <label onclick="dateClickListener()" class="p-0" id="date-container">
-                    <input type="date" id="datepicker">
+                    <input type="datetime-local" id="datepicker">
                     <div class="item-control d-flex align-items-center h-100">
                       <i class="bi bi-calendar3" id="date-icon"></i><p style="padding-left:5px;" id="date-text">Today</p>
                     </div>
@@ -123,7 +124,7 @@
                     <i class="bi bi-list-ul" id="priority-icon"></i><p style="padding-left:5px;" id="priority-text">Priority</p>
                   </div>
                 </div>
-                <input type="text" class="form-control" placeholder="Description ..." id="description-input">
+                <textarea type="text" class="form-control" placeholder="Description ..." id="description-input" rows="5"></textarea>
                 {{--input dropdown--}}
                 <select class="form-select" aria-label="Default select example" id="priority-input">
                   <option selected>Open this select menu</option>
@@ -146,22 +147,23 @@
           <ul class="accor-container">
             <li class="accor-list active">
               <div class="wrap">
-                <a class="accor-header" href="#">Today<span>Wed, 21 April</span></a>
+                <div class="accor-header-container">
+                  <a class="accor-header" href="#">Today<span>Wed, 21 April</span></a>
+                  <div class="accor-dropdown dropdown">
+                    <div class="sort-button d-flex p-2" style="cursor:pointer;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <img src="{{asset('asset/img/sort-icon.svg')}}" width="24px" height="24px"/>
+                      <p style="color:#808080;">Sort: Prioritas</p>
+                    </div>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div>
+                </div>
+                
                 <div>
                   <div class="accor-list-content">
-                    <div class="d-flex justify-content-end">
-                      <div class="dropdown">
-                        <div class="sort-button d-flex p-2" style="cursor:pointer;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <img src="{{asset('asset/img/sort-icon.svg')}}" width="24px" height="24px"/>
-                          <p style="color:#808080;">Sort: Prioritas</p>
-                        </div>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                      </div>
-                    </div>
                     <ul class="list-group list-group-flush group-list-all-task">
                       {{-- list item --}}
                       <li class="list-group-item">
@@ -220,6 +222,7 @@
           </ul>
         </div>
     </div>
+  </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
