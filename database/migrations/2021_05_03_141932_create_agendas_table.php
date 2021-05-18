@@ -15,13 +15,13 @@ class CreateAgendasTable extends Migration
     {
         Schema::create('agendas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->constrained();
             $table->string('nama_agenda');
             $table->timestamp('tenggat_waktu');
             $table->text('deskripsi');
             $table->string('label')->nullable();
-            $table->integer('durasi');
-            $table->string('status');
+            $table->integer('durasi')->nullable();
+            $table->string('status')->nullable();
             $table->integer('skala_prioritas');
             $table->timestamps();
         });

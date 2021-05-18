@@ -24,5 +24,7 @@ Route::prefix('register')->group(function() {
 });
 
 Route::get('/', [TaskController::class, 'index'])->middleware('auth');
+Route::post('/store', [TaskController::class, 'store'])->middleware('auth');
+Route::delete('/{agenda:id}/delete', [TaskController::class, 'destroy'])->middleware('auth');
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
