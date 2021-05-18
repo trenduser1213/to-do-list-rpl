@@ -15,7 +15,7 @@
     <title>Log In</title>
   </head>
   <body class="bd">
-    <div class="background-overlay" style="background-image: url({{asset('asset/img/background-overlay.jpg') }})"></div>
+    <div class="background-overlay" style="background-image: url({{ asset('asset/img/background-overlay.jpg') }})"></div>
     <div class="login-container">
       <div class="login-box shadow-lg">
         <form action="{{ route('login') }}" method="post">

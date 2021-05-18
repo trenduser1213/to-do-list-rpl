@@ -6,7 +6,6 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TaskController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,10 +23,8 @@ Route::prefix('register')->group(function() {
     Route::post('/create', [RegisterController::class, 'registerVerification']);
 });
 
-Route::post('store', [TaskController::class, 'store']);
+Route::get('/', [TaskController::class, 'index'])->middleware('auth');
+Route::post('/store', [TaskController::class, 'store'])->middleware('auth');
+Route::delete('/{agenda:id}/delete', [TaskController::class, 'destroy'])->middleware('auth');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('/', function () {
-    return view('agenda');
-});
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
