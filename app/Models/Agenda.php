@@ -9,19 +9,16 @@ class Agenda extends Model
 {
     use HasFactory;
 
-    protected $fillable=[
-        'user_id',
+    protected $fillable = [
         'nama_agenda',
         'tenggat_waktu',
         'deskripsi',
-        'label',
-        'durasi',
+        'skala_prioritas',
         'status',
-        'skala_prioritas'
     ];
 
     public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 }

@@ -23,7 +23,9 @@ Route::prefix('register')->group(function() {
     Route::post('/create', [RegisterController::class, 'registerVerification']);
 });
 
-Route::post('/login',[LoginController::class,'login']);
+Route::get('/', [TaskController::class, 'index'])->middleware('auth');
+Route::post('/store', [TaskController::class, 'store'])->middleware('auth');
+Route::delete('/{agenda:id}/delete', [TaskController::class, 'destroy'])->middleware('auth');
 
 Route::get('/',[LoginController::class,'showLoginForm']);
 
