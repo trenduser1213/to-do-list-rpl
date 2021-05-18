@@ -6,8 +6,12 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    public function index()
+    public function store(Request $request)
     {
-        return view('AllTask.AllTask');
+    $attr = $request->all();
+
+    // Create new post
+    $agenda = auth()->user()->agendas()->create($attr);
     }
+
 }
