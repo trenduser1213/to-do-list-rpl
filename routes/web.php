@@ -27,9 +27,6 @@ Route::prefix('register')->group(function() {
 });
 
 Route::get('/login', [LoginController::class, 'index']);
-Route::get('/login-triandi', function(){
-    return view('login');
-});
 
 Auth::routes();
 
