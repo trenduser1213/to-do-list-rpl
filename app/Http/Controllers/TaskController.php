@@ -10,21 +10,27 @@ class TaskController extends Controller
 {
     public function index()
     {
-        $agendas = Agenda::get();
+        $now = Carbon::now()->timezone('Asia/Jakarta');
+        $agendas = auth()->user()->agendas->where('tenggat_waktu', '>=', $now)->groupBy(function($data) {
+            $deadline = new Carbon($data->tenggat_waktu);
+            return $deadline->format('d F Y');
+        })->sortBy('tenggat_waktu');
 
-        $now = Carbon::now();
         $priority = Agenda::orderBy('tenggat_waktu', 'asc')
                 ->orderBy('skala_prioritas', 'desc')
                 ->where('tenggat_waktu','>',$now)
                 ->get();
-        return view('AllTask.AllTask', compact('agendas','priority'));
+        $lateTasks = auth()->user()->agendas->where('tenggat_waktu', '<', $now);
+
+        return view('AllTask.AllTask', compact('agendas', 'lateTasks','priority'));
     }
 
     public function store(TaskRequest $taskRequest)
     {
         $attr = $taskRequest->all();
-        $deadline = new Carbon($taskRequest->tenggat_waktu);
-        $now = Carbon::now();
+        $deadline_date = new Carbon($taskRequest->tenggat_waktu);
+        $deadline = $deadline_date->format('Y-m-d');
+        $now = Carbon::now()->timezone('Asia/Jakarta')->format('Y-m-d');
 
         $attr['status'] = ($now == $deadline) ? 'today' : (($now < $deadline) ? 'upcoming' : 'late');
 
