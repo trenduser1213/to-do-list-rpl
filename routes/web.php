@@ -25,15 +25,9 @@ Route::prefix('register')->group(function() {
 
 Route::get('/', [TaskController::class, 'index'])->middleware('auth');
 Route::post('/store', [TaskController::class, 'store'])->middleware('auth');
+Route::patch('/{agenda:id}/update',[TaskController::class, 'update'])->middleware('auth');
 Route::delete('/{agenda:id}/delete', [TaskController::class, 'destroy'])->middleware('auth');
-
-Route::get('/',[LoginController::class,'showLoginForm']);
-
-Route::post('store', [TaskController::class, 'store']);
+Route::get('/{agenda:id}/set-data-form', [TaskController::class, 'setDataForm'])->middleware('auth');
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::prefix('home')->name('home.')->middleware('auth')->group(function(){
-    Route::get('/',[TaskController::class,'showAllTask'])->name('dashboard');
-    Route::post('add-data',[TaskController::class,'addAgendas'])->name('adddata');
-});

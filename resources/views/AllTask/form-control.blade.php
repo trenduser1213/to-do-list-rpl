@@ -1,9 +1,9 @@
 <div class="modal-body">
-    <input type="text" class="form-control" id="exampleFormControlInput1" name="nama_agenda" placeholder="Activity Name ...">
+    <input type="text" class="form-control"  name="nama_agenda" placeholder="Activity Name ...">
     {{-- action control --}}
     <div class="d-flex item-control-container">
         <label onclick="dateClickListener()" class="p-0 m-0" id="date-container">
-            <input type='text' name="tenggat_waktu" class="form-control" id="datepicker" onchange="changeDateText()">
+            <input type='text' name="tenggat_waktu" class="form-control" id="datepicker">
             <div class="item-control d-flex align-items-center h-100">
                 <i class="bi bi-calendar3" id="date-icon"></i><p style="padding-left:5px;" id="date-text">Today</p>
             </div>

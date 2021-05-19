@@ -12,7 +12,12 @@ class TaskController extends Controller
     {
         $agendas = Agenda::get();
 
-        return view('AllTask.AllTask', compact('agendas'));
+        $now = Carbon::now();
+        $priority = Agenda::orderBy('tenggat_waktu', 'asc')
+                ->orderBy('skala_prioritas', 'desc')
+                ->where('tenggat_waktu','>',$now)
+                ->get();
+        return view('AllTask.AllTask', compact('agendas','priority'));
     }
 
     public function store(TaskRequest $taskRequest)
@@ -21,7 +26,7 @@ class TaskController extends Controller
         $deadline = new Carbon($taskRequest->tenggat_waktu);
         $now = Carbon::now();
 
-        $attr['status'] = ($deadline->diff($now)->days == 0) ? 'today' : (($deadline->diff($now)->days >= 1) ? 'upcoming' : 'late');
+        $attr['status'] = ($now == $deadline) ? 'today' : (($now < $deadline) ? 'upcoming' : 'late');
 
         auth()->user()->agendas()->create($attr);
 
@@ -35,4 +40,20 @@ class TaskController extends Controller
         return redirect('/');
     }
 
+    public function update(TaskRequest $taskRequest,Agenda $agenda ){
+        $attr = $taskRequest->except(['_method','_token']);
+        $deadline = new Carbon($taskRequest->tenggat_waktu);
+        $now = Carbon::now();
+
+        $attr['status'] = ($now == $deadline) ? 'today' : (($now < $deadline) ? 'upcoming' : 'late');
+
+        auth()->user()->agendas()->where('id','=',$agenda->id)->update($attr);
+
+        return redirect('/');
+    }
+
+    public function setDataForm(Agenda $agenda)
+    {
+        return view('AllTask.form-control-edit', ['agenda' => $agenda]);
+    }
 }

@@ -117,7 +117,8 @@
               <div class="wrap">
                 <div class="accor-header-container">
                   <a class="accor-header" href="#">Today<span>Wed, 21 April</span></a>
-                  <div class="accor-dropdown dropdown">
+                  {{-- 
+                    <div class="accor-dropdown dropdown">
                     <div class="sort-button d-flex p-2" style="cursor:pointer;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <img src="{{asset('asset/img/sort-icon.svg')}}" width="24px" height="24px"/>
                       <p style="color:#808080;">Sort: Prioritas</p>
@@ -128,53 +129,59 @@
                       <a class="dropdown-item" href="#">Something else here</a>
                     </div>
                   </div>
+                    --}}
                 </div>
                 
                 <div>
                   <div class="accor-list-content">
                     <ul class="list-group list-group-flush group-list-all-task">
                       {{-- list item --}}
-                      <li class="list-group-item">
-                        <div class="task-container priority-task">
-                          <div class="tesk-text-container d-flex">
-                            <div class="task-icon-checkbox-container d-flex align-items-center">
-                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            </div>
-                            <div>
-                              <strong style="color:white">Meeting rpl</strong>
-                              <p style="color:rgba(255, 255, 255, 0.58);margin:0px">Daily Scrum</p>
-                              <div class="dueto-task-container">
-                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M9 0C4.03732 0 0 4.03732 0 9C0 13.9627 4.03732 18 9 18C13.9627 18 18 13.9627 18 9C18 4.03732 13.9627 0 9 0ZM9 16.0328C5.12202 16.0328 1.96721 12.878 1.96721 9C1.96721 5.12221 5.12202 1.96721 9 1.96721C12.878 1.96721 16.0328 5.12221 16.0328 9C16.0328 12.878 12.878 16.0328 9 16.0328Z" fill="#fff"/>
-                                  <path d="M9.77872 9.01078V5.23868C9.77872 4.8175 9.43742 4.4762 9.01639 4.4762C8.59524 4.4762 8.25391 4.8175 8.25391 5.23868V9.25437C8.25391 9.26636 8.25686 9.27761 8.25744 9.2896C8.24741 9.49693 8.31884 9.70744 8.47718 9.86581L11.3169 12.7053C11.6147 13.0031 12.0975 13.0031 12.3951 12.7053C12.6927 12.4074 12.6929 11.9247 12.3951 11.627L9.77872 9.01078Z" fill="#fff"/>
-                                </svg>
-                                <p style="color:white">23 maret 2021</p>
+                      @for ($i = 0; $i < $priority->count(); $i++)
+                        @if ($i===0)
+                            <li class="list-group-item">
+                              <div class="task-container priority-task">
+                                <div class="tesk-text-container d-flex">
+                                  <div class="task-icon-checkbox-container d-flex align-items-center">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                  </div>
+                                  <div>
+                                    <strong style="color:white">{{$priority[$i]->nama_agenda}}</strong>
+                                    <p style="color:rgba(255, 255, 255, 0.58);margin:0px">{{$priority[$i]->deskripsi}}</p>
+                                    <div class="dueto-task-container">
+                                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9 0C4.03732 0 0 4.03732 0 9C0 13.9627 4.03732 18 9 18C13.9627 18 18 13.9627 18 9C18 4.03732 13.9627 0 9 0ZM9 16.0328C5.12202 16.0328 1.96721 12.878 1.96721 9C1.96721 5.12221 5.12202 1.96721 9 1.96721C12.878 1.96721 16.0328 5.12221 16.0328 9C16.0328 12.878 12.878 16.0328 9 16.0328Z" fill="#fff"/>
+                                        <path d="M9.77872 9.01078V5.23868C9.77872 4.8175 9.43742 4.4762 9.01639 4.4762C8.59524 4.4762 8.25391 4.8175 8.25391 5.23868V9.25437C8.25391 9.26636 8.25686 9.27761 8.25744 9.2896C8.24741 9.49693 8.31884 9.70744 8.47718 9.86581L11.3169 12.7053C11.6147 13.0031 12.0975 13.0031 12.3951 12.7053C12.6927 12.4074 12.6929 11.9247 12.3951 11.627L9.77872 9.01078Z" fill="#fff"/>
+                                      </svg>
+                                      <p style="color:white">{{$priority[$i]->tenggat_waktu}}</p>
+                                    </div>
+                                  </div>
+                                </div>
                               </div>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-  
-                      <li class="list-group-item">
-                        <div class="task-container justify-content-between">
-                          <div class="tesk-text-container d-flex align-items-center">
-                            <div class="task-icon-checkbox-container">
-                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            </div>
-                            <div class="task-content">
-                              <strong>Meeting rpl</strong>
-                              <p style="color:#808080">Diskusi tentang prototype</p>
-                              <div class="dueto-task-container">
-                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M9 0C4.03732 0 0 4.03732 0 9C0 13.9627 4.03732 18 9 18C13.9627 18 18 13.9627 18 9C18 4.03732 13.9627 0 9 0ZM9 16.0328C5.12202 16.0328 1.96721 12.878 1.96721 9C1.96721 5.12221 5.12202 1.96721 9 1.96721C12.878 1.96721 16.0328 5.12221 16.0328 9C16.0328 12.878 12.878 16.0328 9 16.0328Z" fill="#D1453B"/>
-                                  <path d="M9.77872 9.01078V5.23868C9.77872 4.8175 9.43742 4.4762 9.01639 4.4762C8.59524 4.4762 8.25391 4.8175 8.25391 5.23868V9.25437C8.25391 9.26636 8.25686 9.27761 8.25744 9.2896C8.24741 9.49693 8.31884 9.70744 8.47718 9.86581L11.3169 12.7053C11.6147 13.0031 12.0975 13.0031 12.3951 12.7053C12.6927 12.4074 12.6929 11.9247 12.3951 11.627L9.77872 9.01078Z" fill="#D1453B"/>
-                                </svg>
-                                <p>23 maret 2021</p>
+                            </li>
+                          @else
+                            <li class="list-group-item">
+                              <div class="task-container justify-content-between">
+                                <div class="tesk-text-container d-flex align-items-center">
+                                  <div class="task-icon-checkbox-container">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                  </div>
+                                  <div class="task-content">
+                                    <strong>{{$priority[$i]->nama_agenda}}</strong>
+                                    <p style="color:#808080">{{$priority[$i]->deskripsi}}</p>
+                                    <div class="dueto-task-container">
+                                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9 0C4.03732 0 0 4.03732 0 9C0 13.9627 4.03732 18 9 18C13.9627 18 18 13.9627 18 9C18 4.03732 13.9627 0 9 0ZM9 16.0328C5.12202 16.0328 1.96721 12.878 1.96721 9C1.96721 5.12221 5.12202 1.96721 9 1.96721C12.878 1.96721 16.0328 5.12221 16.0328 9C16.0328 12.878 12.878 16.0328 9 16.0328Z" fill="#D1453B"/>
+                                        <path d="M9.77872 9.01078V5.23868C9.77872 4.8175 9.43742 4.4762 9.01639 4.4762C8.59524 4.4762 8.25391 4.8175 8.25391 5.23868V9.25437C8.25391 9.26636 8.25686 9.27761 8.25744 9.2896C8.24741 9.49693 8.31884 9.70744 8.47718 9.86581L11.3169 12.7053C11.6147 13.0031 12.0975 13.0031 12.3951 12.7053C12.6927 12.4074 12.6929 11.9247 12.3951 11.627L9.77872 9.01078Z" fill="#D1453B"/>
+                                      </svg>
+                                      <p>{{$priority[$i]->tenggat_waktu}}</p>
+                                    </div>
+                                  </div>
+                                </div>
                               </div>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
+                            </li>
+                          @endif
+                      @endfor
+                     
                       {{-- list item --}}
                     </ul>
                   </div>
@@ -234,11 +241,11 @@
   <!-- Edit Modal -->
   <div class="modal fade bd-example-modal-lg" id="editTaskModal" tabindex="-1" role="dialog" aria-labelledby="editTaskModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-      <div class="modal-content">
+      <div class="modal-content edit-model-content">
         <form method="POST">
-          @method('patch')
           @csrf
-          @include('AllTask.form-control', ['action' => 'edit'])
+          @method('patch')
+          <div id="edit-modal-body"></div>
         </form>
       </div>
     </div>
@@ -254,7 +261,8 @@
         $('#datepicker').datetimepicker({
           format: 'YYYY-MM-DD HH:mm:ss',
           sideBySide:true,
-        }).on("dp.change", function() {
+        }).on("dp.change", function(e) {
+          console.log(e);
           $('#date-text').html(this.value);
         });
     });
@@ -288,6 +296,42 @@
     function setDataDelete(id) {
         console.log(id);
         $('.modal-footer-delete form').attr("action", `/${id}/delete`);
+    }
+  </script>
+  <script>
+    const editModal = document.getElementById('editTaskModal');
+    const editButton = document.querySelectorAll('.edit-button');
+
+    for(i=0; i<editButton.length; i++) {
+      editButton[i].addEventListener('click', showEditModal);
+    }
+
+    const setEditDataForm = function(id) {
+      $.ajax({
+          url: `/${id}/set-data-form`,
+          method: "GET",
+          // data: {
+          //     id: id,
+          // },
+          success:function(data){
+              // $('#popup-detail-transaksi').find('.popup-title').html("Detail Transaksi");
+              console.log(data);
+              $('#edit-modal-body').html(data);
+          },
+          error:function(error) {
+              console.log(error);
+          }
+      });
+    }
+
+    function setDataEdit(id) {
+        $('.edit-model-content form').attr("action", `/${id}/update`);
+    }
+
+    function showEditModal(e) {
+        e.preventDefault();
+        setEditDataForm(e.target.parentElement.dataset.id);
+        setDataEdit(e.target.parentElement.dataset.id);
     }
   </script>
 </body>
