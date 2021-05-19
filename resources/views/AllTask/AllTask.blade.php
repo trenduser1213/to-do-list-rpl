@@ -23,20 +23,40 @@
         <img src="{{asset('asset/img/ido-logo.svg')}}" width="90%"/>
       </div>
       <div class="d-flex">
-        <i class="bi bi-bell px-3" style="margin: auto;color:rgba(0, 0, 0, 0.54);font-size:24px"></i>
+        {{-- <i class="bi bi-bell px-3" style="margin: auto;color:rgba(0, 0, 0, 0.54);font-size:24px"></i> --}}
         <div class="dropdown">
-          <p class="py-2 px-3" style="border-radius: 50%;background-color: #2FAF3C;color:white; cursor:pointer" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">F</p>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li>
-              <form action="{{ route('logout') }}" method="POST">
-                @csrf
+          <p class="py-2 px-3" style="border-radius: 50%;background-color: #2FAF3C;color:white; cursor:pointer; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; text-transform: capitalize;" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            {{ substr(auth()->user()->nama, 0, 1) }}
+          </p>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="transform: translate(-200px, 42px); min-width: 15rem;">
+            <div class="profile-login-container d-flex">
+              <p class="py-2 px-3" style="border-radius: 50%;background-color: #2FAF3C;color:white; cursor:pointer; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; text-transform: capitalize;" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                {{ substr(auth()->user()->nama, 0, 1) }}
+              </p>
+
+              <div class="profile-login-content">
+                <h4>{{ auth()->user()->nama }}</h4>
+                <small class="text-secondary">{{ auth()->user()->email }}</small>
+              </div>
+            </div>
+            <ul class="list-unstyled m-0">
+              <li><h6 class="dropdown-header">Action</h6></li>
+              <li>
                 <button class="dropdown-item d-flex align-items-center" type="submit" style="color:#D1453B">
-                  <i class="bi bi-box-arrow-right pe-2" style="font-size: 18px"></i> Log Out
+                  <i class="bi bi-gear pe-2"></i> Settings
                 </button>
-             </form>
-          </li>
-          </ul>
+              </li>
+              <li>
+                <form action="{{ route('logout') }}" method="POST">
+                  @csrf
+                  <button class="dropdown-item d-flex align-items-center" type="submit" style="color:#D1453B">
+                    <i class="bi bi-box-arrow-right pe-2" style="font-size: 18px"></i> Log Out
+                  </button>
+                </form>
+              </li>
+            </ul>
+          </div>
+          
         </div>
         
       </div>
@@ -62,46 +82,49 @@
               </div>
             </div>
             <div class="all-task-list">
-              {{-- list --}}
-              <ul class="list-group list-group-flush group-list-all-task">
-                {{-- list item --}}
-                @if ($agendas->count() > 0)
-                  @foreach ($agendas as $agenda)
-                    <li class="list-group-item">
-                      <div class="task-container justify-content-between">
-                        <div class="tesk-text-container d-flex align-items-center">
-                          <div class="task-icon-checkbox-container">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              @if ($agendas->count() > 0)
+                @foreach ($agendas as $key => $agenda_list)
+                  <h6 class="fw-bold">{{ $key }}</h6>
+                  {{-- list --}}
+                  <ul class="list-group list-group-flush group-list-all-task mb-4">
+                    @foreach ($agenda_list as $agenda)
+                      {{-- list item --}}
+                      <li class="list-group-item">
+                        <div class="task-container justify-content-between">
+                          <div class="tesk-text-container d-flex align-items-center">
+                            <div class="task-icon-checkbox-container">
+                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            </div>
+                            <div class="task-content">
+                              <strong>{{ $agenda->nama_agenda }}</strong>
+                              <p style="color:#808080">{{ $agenda->deskripsi }}</p>
+                              <div class="dueto-task-container">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M9 0C4.03732 0 0 4.03732 0 9C0 13.9627 4.03732 18 9 18C13.9627 18 18 13.9627 18 9C18 4.03732 13.9627 0 9 0ZM9 16.0328C5.12202 16.0328 1.96721 12.878 1.96721 9C1.96721 5.12221 5.12202 1.96721 9 1.96721C12.878 1.96721 16.0328 5.12221 16.0328 9C16.0328 12.878 12.878 16.0328 9 16.0328Z" fill="#D1453B"/>
+                                  <path d="M9.77872 9.01078V5.23868C9.77872 4.8175 9.43742 4.4762 9.01639 4.4762C8.59524 4.4762 8.25391 4.8175 8.25391 5.23868V9.25437C8.25391 9.26636 8.25686 9.27761 8.25744 9.2896C8.24741 9.49693 8.31884 9.70744 8.47718 9.86581L11.3169 12.7053C11.6147 13.0031 12.0975 13.0031 12.3951 12.7053C12.6927 12.4074 12.6929 11.9247 12.3951 11.627L9.77872 9.01078Z" fill="#D1453B"/>
+                                </svg>
+                                <p>{{ \Carbon\Carbon::parse($agenda->tenggat_waktu)->format('d F Y H:m:i') }}</p>
+                              </div>
+                            </div>
                           </div>
-                          <div class="task-content">
-                            <strong>{{ $agenda->nama_agenda }}</strong>
-                            <p style="color:#808080">{{ $agenda->deskripsi }}</p>
-                            <div class="dueto-task-container">
-                              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M9 0C4.03732 0 0 4.03732 0 9C0 13.9627 4.03732 18 9 18C13.9627 18 18 13.9627 18 9C18 4.03732 13.9627 0 9 0ZM9 16.0328C5.12202 16.0328 1.96721 12.878 1.96721 9C1.96721 5.12221 5.12202 1.96721 9 1.96721C12.878 1.96721 16.0328 5.12221 16.0328 9C16.0328 12.878 12.878 16.0328 9 16.0328Z" fill="#D1453B"/>
-                                <path d="M9.77872 9.01078V5.23868C9.77872 4.8175 9.43742 4.4762 9.01639 4.4762C8.59524 4.4762 8.25391 4.8175 8.25391 5.23868V9.25437C8.25391 9.26636 8.25686 9.27761 8.25744 9.2896C8.24741 9.49693 8.31884 9.70744 8.47718 9.86581L11.3169 12.7053C11.6147 13.0031 12.0975 13.0031 12.3951 12.7053C12.6927 12.4074 12.6929 11.9247 12.3951 11.627L9.77872 9.01078Z" fill="#D1453B"/>
-                              </svg>
-                              <p>{{ $agenda->tenggat_waktu }}</p>
+                          <div class="task-action d-flex align-items-center">
+                            <div class="edit-button" data-id="{{ $agenda->id }}">
+                              <i class="bi bi-pencil" style="color:#808080" data-toggle="modal" data-target="#editTaskModal"></i>
+                            </div>
+                            
+                            <div class="delete-button" data-id="{{ $agenda->id }}">
+                              <i class="bi bi-x-circle sampah-icon" style="color:#808080" data-bs-toggle="modal" data-bs-target="#deleteModal"></i>
                             </div>
                           </div>
                         </div>
-                        <div class="task-action d-flex align-items-center">
-                          <div class="edit-button" data-id="{{ $agenda->id }}">
-                            <i class="bi bi-pencil" style="color:#808080" data-toggle="modal" data-target="#editTaskModal"></i>
-                          </div>
-                          
-                          <div class="delete-button" data-id="{{ $agenda->id }}">
-                            <i class="bi bi-x-circle sampah-icon" style="color:#808080" data-bs-toggle="modal" data-bs-target="#deleteModal"></i>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                  @endforeach
+                      </li>
+                    @endforeach
+                    {{-- list item --}}
+                  </ul>
+                @endforeach
                 @else
                   <h1>No Task</h1>
                 @endif
-                {{-- list item --}}
-              </ul>
               {{-- end list --}}
             </div>
           </div>
@@ -184,7 +207,35 @@
             <li class="accor-list">
               <div class="wrap">
                 <a class="accor-header" href="#">Late</a>
-                <div class="accor-list-content">text 2</div>    
+                <div>
+                  <div class="accor-list-content">
+                    <ul class="list-group list-group-flush group-list-all-task">
+                      @foreach ($lateTasks as $lateTask)
+                        <li class="list-group-item">
+                          <div class="task-container justify-content-between">
+                            <div class="tesk-text-container d-flex align-items-center">
+                              <div class="task-icon-checkbox-container">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                              </div>
+                              <div class="task-content">
+                                <strong>{{ $lateTask->nama_agenda }}</strong>
+                                <p style="color:#808080">{{ $lateTask->deskripsi }}</p>
+                                <div class="dueto-task-container">
+                                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 0C4.03732 0 0 4.03732 0 9C0 13.9627 4.03732 18 9 18C13.9627 18 18 13.9627 18 9C18 4.03732 13.9627 0 9 0ZM9 16.0328C5.12202 16.0328 1.96721 12.878 1.96721 9C1.96721 5.12221 5.12202 1.96721 9 1.96721C12.878 1.96721 16.0328 5.12221 16.0328 9C16.0328 12.878 12.878 16.0328 9 16.0328Z" fill="#D1453B"/>
+                                    <path d="M9.77872 9.01078V5.23868C9.77872 4.8175 9.43742 4.4762 9.01639 4.4762C8.59524 4.4762 8.25391 4.8175 8.25391 5.23868V9.25437C8.25391 9.26636 8.25686 9.27761 8.25744 9.2896C8.24741 9.49693 8.31884 9.70744 8.47718 9.86581L11.3169 12.7053C11.6147 13.0031 12.0975 13.0031 12.3951 12.7053C12.6927 12.4074 12.6929 11.9247 12.3951 11.627L9.77872 9.01078Z" fill="#D1453B"/>
+                                  </svg>
+                                  <p>{{ \Carbon\Carbon::parse($lateTask->tenggat_waktu)->format('d F Y H:m:i') }}</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      @endforeach
+                      {{-- list item --}}
+                    </ul>
+                  </div>
+                </div>
               </div>
             </li>
           </ul>
