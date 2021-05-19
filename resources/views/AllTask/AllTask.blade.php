@@ -67,7 +67,7 @@
             <div class="task-list d-flex justify-content-between">
               <h1>All Task</h1>
               <div class="d-flex">
-                <div class="dropdown">
+                {{-- <div class="dropdown">
                   <div class="sort-button d-flex p-2" style="cursor:pointer;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img src="{{asset('asset/img/sort-icon.svg')}}" width="24px" height="24px"/>
                     <p style="color:#808080;">Sort: Prioritas</p>
@@ -77,7 +77,7 @@
                     <a class="dropdown-item" href="#">Another action</a>
                     <a class="dropdown-item" href="#">Something else here</a>
                   </div>
-                </div>
+                </div> --}}
               </div>
             </div>
             <div class="all-task-list">

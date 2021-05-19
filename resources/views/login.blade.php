@@ -45,7 +45,7 @@
             <button type="submit" class="text-light form-control mt-3" style="background-color: #643FDB;">Log In</button>
           </div>
         </form>
-        <div class="row my-3">
+        {{-- <div class="row my-3">
           <div class="col-5"><hr></div>
           <div class="col-2 text-center">
             <p>or</p>
@@ -53,7 +53,7 @@
           <div class="col-5"><hr></div>
         </div>
         <a class="text-center text-decoration-none shadow-sm form-control p-2" style="cursor: pointer;" href=""><img src="assetLoginRegis/icon/google.svg" alt="" height="20px"> Log In With Google</a>
-        <hr class="my-4">
+        <hr class="my-4"> --}}
         <div class="text-center">
           <label>Don't have an account? <a href="/register">Sign up</a></label>
         </div>

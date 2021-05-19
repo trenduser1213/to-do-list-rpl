@@ -21,7 +21,7 @@
         <form action="/register/create" method="post">
           @csrf
           <div class=" form">
-            <h1 class="h1 mb-3 font-monospace">Register</h1>
+            <h1 class="h1 mb-3 ">Register</h1>
             <label for="email" class="form-label mt-4">E-mail</label>
             <input type="email" class="form-control" name="email" id="email" required autofocus>
             @error('email')
@@ -60,7 +60,7 @@
             <button type="submit" class=" text-light form-control mt-4" style="background-color: #643FDB;">Register</button>
           </div>
         </form>
-        <div class="row my-4">
+        {{-- <div class="row my-4">
           <div class="col-5"><hr></div>
           <div class="col-2 text-center">
             <p>or</p>
@@ -69,7 +69,7 @@
         </div>
         
         <a class="text-center text-decoration-none shadow-sm form-control p-2" style="cursor: pointer;" href=""><img src="assetLoginRegis/icon/google.svg" alt="" height="20px"> Log In With Google</a>
-        <hr class="my-4">
+        <hr class="my-4"> --}}
         <div class="text-center ">
           <label>Already signed up? <a href="/login">Login</a></label>
         </div>
