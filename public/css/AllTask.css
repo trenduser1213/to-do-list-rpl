@@ -191,6 +191,9 @@ p {
 .accordion-search-action{
   display: flex;
 }
+.controlsDivStyle{
+  display: none !important;
+}
 #accourdion-action-two{
   display: none;
 }
@@ -210,6 +213,7 @@ p {
 #description-input-edit{
   display: none;
 }
+
 
 label {
   display: inline-block;
@@ -233,9 +237,55 @@ label {
   height: 300%;
   cursor: pointer;
 }
+
 #datepicker:hover  {
   background-color: silver;
 }
+
+#durationpicker {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  overflow: hidden;
+  cursor: pointer;
+}
+#durationpicker::-webkit-calendar-picker-indicator {
+  position: absolute;
+  top: -150%;
+  left: -150%;
+  width: 300%;
+  height: 300%;
+  cursor: pointer;
+}
+
+#durationpicker:hover  {
+  background-color: silver;
+}
+
+#durationpicker-edit {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  overflow: hidden;
+  cursor: pointer;
+}
+#durationpicker-edit::-webkit-calendar-picker-indicator {
+  position: absolute;
+  top: -150%;
+  left: -150%;
+  width: 300%;
+  height: 300%;
+  cursor: pointer;
+}
+
+#durationpicker-edit:hover  {
+  background-color: silver;
+}
+
 #datepicker-edit {
   position: absolute;
   opacity: 0;

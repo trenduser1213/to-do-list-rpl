@@ -32,7 +32,7 @@
             <label for="password" class="form-label mt-4">Password</label>
             <input id="password" name="password" type="password" class="form-control">
             <div class="mt-4 mb-4">
-              <div class="row">
+              {{-- <div class="row">
                 <div class="col-6" style="text-align: left;">
                   <input class="form-check-input" type="checkbox" id="remember" name="remember">
                   <label class="form-check-label" for="remember">Remember me</label>
@@ -40,7 +40,7 @@
                 <div class="col-6" style="text-align: right;">
                   <a class="mt-0 link-secondary" href="#">Forget Password ?</a>
                 </div>
-              </div>
+              </div> --}}
             </div>
             <button type="submit" class="text-light form-control mt-3" style="background-color: #643FDB;">Log In</button>
           </div>

@@ -159,52 +159,51 @@
                   <div class="accor-list-content">
                     <ul class="list-group list-group-flush group-list-all-task">
                       {{-- list item --}}
-                      @for ($i = 0; $i < $priority->count(); $i++)
-                        @if ($i===0)
-                            <li class="list-group-item">
-                              <div class="task-container priority-task">
-                                <div class="tesk-text-container d-flex">
-                                  <div class="task-icon-checkbox-container d-flex align-items-center">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                  </div>
-                                  <div>
-                                    <strong style="color:white">{{$priority[$i]->nama_agenda}}</strong>
-                                    <p style="color:rgba(255, 255, 255, 0.58);margin:0px">{{$priority[$i]->deskripsi}}</p>
-                                    <div class="dueto-task-container">
-                                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M9 0C4.03732 0 0 4.03732 0 9C0 13.9627 4.03732 18 9 18C13.9627 18 18 13.9627 18 9C18 4.03732 13.9627 0 9 0ZM9 16.0328C5.12202 16.0328 1.96721 12.878 1.96721 9C1.96721 5.12221 5.12202 1.96721 9 1.96721C12.878 1.96721 16.0328 5.12221 16.0328 9C16.0328 12.878 12.878 16.0328 9 16.0328Z" fill="#fff"/>
-                                        <path d="M9.77872 9.01078V5.23868C9.77872 4.8175 9.43742 4.4762 9.01639 4.4762C8.59524 4.4762 8.25391 4.8175 8.25391 5.23868V9.25437C8.25391 9.26636 8.25686 9.27761 8.25744 9.2896C8.24741 9.49693 8.31884 9.70744 8.47718 9.86581L11.3169 12.7053C11.6147 13.0031 12.0975 13.0031 12.3951 12.7053C12.6927 12.4074 12.6929 11.9247 12.3951 11.627L9.77872 9.01078Z" fill="#fff"/>
-                                      </svg>
-                                      <p style="color:white">{{$priority[$i]->tenggat_waktu}}</p>
-                                    </div>
-                                  </div>
+                      @foreach($priority as $prio)
+                        @if ($prio->id === $priority->first()->id)
+                        <li class="list-group-item">
+                          <div class="task-container priority-task">
+                            <div class="tesk-text-container d-flex">
+                              <div class="task-icon-checkbox-container d-flex align-items-center">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                              </div>
+                              <div>
+                                <strong style="color:white">{{$prio->nama_agenda}}</strong>
+                                <p style="color:rgba(255, 255, 255, 0.58);margin:0px">{{$prio->deskripsi}}</p>
+                                <div class="dueto-task-container">
+                                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 0C4.03732 0 0 4.03732 0 9C0 13.9627 4.03732 18 9 18C13.9627 18 18 13.9627 18 9C18 4.03732 13.9627 0 9 0ZM9 16.0328C5.12202 16.0328 1.96721 12.878 1.96721 9C1.96721 5.12221 5.12202 1.96721 9 1.96721C12.878 1.96721 16.0328 5.12221 16.0328 9C16.0328 12.878 12.878 16.0328 9 16.0328Z" fill="#fff"/>
+                                    <path d="M9.77872 9.01078V5.23868C9.77872 4.8175 9.43742 4.4762 9.01639 4.4762C8.59524 4.4762 8.25391 4.8175 8.25391 5.23868V9.25437C8.25391 9.26636 8.25686 9.27761 8.25744 9.2896C8.24741 9.49693 8.31884 9.70744 8.47718 9.86581L11.3169 12.7053C11.6147 13.0031 12.0975 13.0031 12.3951 12.7053C12.6927 12.4074 12.6929 11.9247 12.3951 11.627L9.77872 9.01078Z" fill="#fff"/>
+                                  </svg>
+                                  <p style="color:white">{{$prio->tenggat_waktu}}</p>
                                 </div>
                               </div>
-                            </li>
-                          @else
-                            <li class="list-group-item">
-                              <div class="task-container justify-content-between">
-                                <div class="tesk-text-container d-flex align-items-center">
-                                  <div class="task-icon-checkbox-container">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                  </div>
-                                  <div class="task-content">
-                                    <strong>{{$priority[$i]->nama_agenda}}</strong>
-                                    <p style="color:#808080">{{$priority[$i]->deskripsi}}</p>
-                                    <div class="dueto-task-container">
-                                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M9 0C4.03732 0 0 4.03732 0 9C0 13.9627 4.03732 18 9 18C13.9627 18 18 13.9627 18 9C18 4.03732 13.9627 0 9 0ZM9 16.0328C5.12202 16.0328 1.96721 12.878 1.96721 9C1.96721 5.12221 5.12202 1.96721 9 1.96721C12.878 1.96721 16.0328 5.12221 16.0328 9C16.0328 12.878 12.878 16.0328 9 16.0328Z" fill="#D1453B"/>
-                                        <path d="M9.77872 9.01078V5.23868C9.77872 4.8175 9.43742 4.4762 9.01639 4.4762C8.59524 4.4762 8.25391 4.8175 8.25391 5.23868V9.25437C8.25391 9.26636 8.25686 9.27761 8.25744 9.2896C8.24741 9.49693 8.31884 9.70744 8.47718 9.86581L11.3169 12.7053C11.6147 13.0031 12.0975 13.0031 12.3951 12.7053C12.6927 12.4074 12.6929 11.9247 12.3951 11.627L9.77872 9.01078Z" fill="#D1453B"/>
-                                      </svg>
-                                      <p>{{$priority[$i]->tenggat_waktu}}</p>
-                                    </div>
-                                  </div>
+                            </div>
+                          </div>
+                        </li>
+                      @else
+                        <li class="list-group-item">
+                          <div class="task-container justify-content-between">
+                            <div class="tesk-text-container d-flex align-items-center">
+                              <div class="task-icon-checkbox-container">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                              </div>
+                              <div class="task-content">
+                                <strong>{{$prio->nama_agenda}}</strong>
+                                <p style="color:#808080">{{$prio->deskripsi}}</p>
+                                <div class="dueto-task-container">
+                                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 0C4.03732 0 0 4.03732 0 9C0 13.9627 4.03732 18 9 18C13.9627 18 18 13.9627 18 9C18 4.03732 13.9627 0 9 0ZM9 16.0328C5.12202 16.0328 1.96721 12.878 1.96721 9C1.96721 5.12221 5.12202 1.96721 9 1.96721C12.878 1.96721 16.0328 5.12221 16.0328 9C16.0328 12.878 12.878 16.0328 9 16.0328Z" fill="#D1453B"/>
+                                    <path d="M9.77872 9.01078V5.23868C9.77872 4.8175 9.43742 4.4762 9.01639 4.4762C8.59524 4.4762 8.25391 4.8175 8.25391 5.23868V9.25437C8.25391 9.26636 8.25686 9.27761 8.25744 9.2896C8.24741 9.49693 8.31884 9.70744 8.47718 9.86581L11.3169 12.7053C11.6147 13.0031 12.0975 13.0031 12.3951 12.7053C12.6927 12.4074 12.6929 11.9247 12.3951 11.627L9.77872 9.01078Z" fill="#D1453B"/>
+                                  </svg>
+                                  <p>{{$prio->tenggat_waktu}}</p>
                                 </div>
                               </div>
-                            </li>
-                          @endif
-                      @endfor
-                     
+                            </div>
+                          </div>
+                        </li>
+                      @endif
+                    @endforeach 
                       {{-- list item --}}
                     </ul>
                   </div>
@@ -315,6 +314,19 @@
         }).on("dp.change", function(e) {
           console.log(e);
           $('#date-text').html(this.value);
+        });
+    });
+  </script>
+  <script type="text/javascript">
+    $(function () {
+        var d = new Date();
+        $('#durationpicker').datetimepicker({
+          format: 'HH:mm:ss',
+          sideBySide:true,
+          defaultDate: d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate() + " 00:00:00",
+        }).on("dp.change", function(e) {
+          console.log(e);
+          $('#duration-text').html(this.value);
         });
     });
   </script>
