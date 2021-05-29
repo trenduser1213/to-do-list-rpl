@@ -12,13 +12,13 @@
             <i class="bi bi-blockquote-right" id="description-icon-edit"></i><p style="padding-left:5px;" id="description-text-edit">Description</p>
         </div>
         <div class="d-flex item-control" style="margin-left: 12px;margin-right:12px" id="priority-container-edit" onclick="priorityClickListenerEdit()">
-            <i class="bi bi-list-ul" id="priority-icon-edit"></i><p style="padding-left:5px;" id="priority-text-edit">Priority</p>
+            <i class="bi bi-list-ul" id="priority-icon-edit"></i><p style="padding-left:5px;" id="priority-text-edit">Priorxity</p>
         </div>
 
         <label onclick="durationClickListener()" class="p-0 m-0" id="duration-container-edit" >
             <input type='text' name="durasi" class="form-control" id="durationpicker-edit">
             <div class="item-control d-flex align-items-center h-100">
-                <i class="bi bi-stopwatch" id="duration-icon-edit"></i><p style="padding-left:5px;" id="duration-text-edit">Duration</p>
+                <i class="bi bi-stopwatch" id="duration-icon-edit"></i><p style="padding-left:5px;" id="duration-text-edit">{{gmdate("H:i:s", $agenda->durasi )}}</p>
             </div>
         </label>
 
