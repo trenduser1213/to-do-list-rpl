@@ -28,6 +28,7 @@ Route::post('/store', [TaskController::class, 'store'])->middleware('auth');
 Route::patch('/{agenda:id}/update',[TaskController::class, 'update'])->middleware('auth');
 Route::delete('/{agenda:id}/delete', [TaskController::class, 'destroy'])->middleware('auth');
 Route::get('/{agenda:id}/set-data-form', [TaskController::class, 'setDataForm'])->middleware('auth');
+Route::post('/{agenda:id}/done-task', [TaskController::class, 'setDoneTask'])->name('set-done-task')->middleware('auth');
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

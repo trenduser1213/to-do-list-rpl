@@ -17,7 +17,7 @@ class CreateAgendasTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->string('nama_agenda');
-            $table->timestamp('tenggat_waktu');
+            $table->dateTime('tenggat_waktu');
             $table->text('deskripsi');
             $table->string('label')->nullable();
             $table->integer('durasi')->nullable();
