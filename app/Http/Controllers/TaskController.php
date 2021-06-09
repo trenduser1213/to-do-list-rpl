@@ -11,7 +11,7 @@ class TaskController extends Controller
     public function index()
     {
         $now = Carbon::now()->timezone('Asia/Jakarta');
-        $agendas = auth()->user()->agendas->where('tenggat_waktu', '>=', $now)->groupBy(function($data) {
+        $agendas = auth()->user()->agendas->where('tenggat_waktu', '>=', $now)->where('status', '!=', 'done')->groupBy(function($data) {
             $deadline = new Carbon($data->tenggat_waktu);
             return $deadline->format('d F Y');
         })->sortBy('tenggat_waktu');
@@ -19,10 +19,14 @@ class TaskController extends Controller
         $priority = Agenda::orderBy('tenggat_waktu', 'asc')
                 ->orderBy('skala_prioritas', 'desc')
                 ->where('tenggat_waktu','>',$now)
+                ->where('status', '!=', 'done')
                 ->get();
-        $lateTasks = auth()->user()->agendas->where('tenggat_waktu', '<', $now);
+        
+        $lateTasks = auth()->user()->agendas->where('tenggat_waktu', '<', $now)->where('status', '!=', 'done');
 
-        return view('AllTask.AllTask', compact('agendas', 'lateTasks','priority'));
+        $doneTasks = auth()->user()->agendas->where('status', '=', 'done');
+
+        return view('AllTask.AllTask', compact('agendas', 'lateTasks', 'priority', 'doneTasks', 'now'));
     }
 
     public function store(TaskRequest $taskRequest)
@@ -67,5 +71,14 @@ class TaskController extends Controller
     public function setDataForm(Agenda $agenda)
     {
         return view('AllTask.form-control-edit', ['agenda' => $agenda]);
+    }
+
+    public function setDoneTask(Agenda $agenda)
+    {
+        $agenda->update([
+            'status' => 'done',
+        ]);
+
+        return redirect('/');
     }
 }

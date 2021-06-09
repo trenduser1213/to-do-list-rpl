@@ -70,7 +70,7 @@
         
         <a class="text-center text-decoration-none shadow-sm form-control p-2" style="cursor: pointer;" href=""><img src="assetLoginRegis/icon/google.svg" alt="" height="20px"> Log In With Google</a>
         <hr class="my-4"> --}}
-        <div class="text-center ">
+        <div class="text-center mt-4">
           <label>Already signed up? <a href="/login">Login</a></label>
         </div>
       </div>
