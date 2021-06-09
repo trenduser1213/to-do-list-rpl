@@ -34,9 +34,15 @@ class TaskController extends Controller
 
         $attr['status'] = ($now == $deadline) ? 'today' : (($now < $deadline) ? 'upcoming' : 'late');
 
+        $str_time = $taskRequest->durasi;
+
+        sscanf($str_time, "%d:%d:%d", $hours, $minutes, $seconds);
+
+        $attr['durasi'] = isset($seconds) ? $hours * 3600 + $minutes * 60 + $seconds : $hours * 60 + $minutes;
+
         auth()->user()->agendas()->create($attr);
 
-        return redirect('/');
+        return redirect('/?action=success');
     }
 
     public function destroy(Agenda $agenda)

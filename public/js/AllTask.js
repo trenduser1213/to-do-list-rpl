@@ -1,3 +1,9 @@
+$(document).ready(function(){
+    $("#successModal").modal('show');
+});
+
+
+
 function dateClickListener(){
     
     document.getElementById("date-container").style.borderColor = "#4D9FFF";

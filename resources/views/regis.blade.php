@@ -51,7 +51,7 @@
               </div>
             @enderror
             <label for="birth" class="form-label mt-4">Date of birth</label>
-            <input type="date" class="form-control" name="birth" id="birth" required>
+            <input type="date" class="form-control" name="birth" id="birth" min='1899-01-01' max='2000-13-13' required>
             @error('birth')
               <div class="text-danger mt-2">
                 {{ ucfirst($message) }}
@@ -75,7 +75,21 @@
         </div>
       </div>
     </div>
- 
+    <script>
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth()+1; //January is 0!
+            var yyyy = today.getFullYear()-10;
+            if(dd<10){
+                    dd='0'+dd
+                } 
+                if(mm<10){
+                    mm='0'+mm
+                } 
+
+            today = yyyy+'-'+mm+'-'+dd;
+            document.getElementById("birth").setAttribute("max", today);
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
     <script src="assetLoginRegis/js/bootstrap.js"></script>
     <script src="assetLoginRegis/js/bootstrap.min.js"></script>

@@ -1,5 +1,6 @@
 <div class="modal-body">
     <input type="text" class="form-control"  name="nama_agenda" placeholder="Activity Name ...">
+    
     {{-- action control --}}
     <div class="d-flex item-control-container">
         <label onclick="dateClickListener()" class="p-0 m-0" id="date-container">
@@ -22,6 +23,13 @@
         </label>
     </div>
     <textarea type="text" class="form-control" name="deskripsi" placeholder="Description ..." id="description-input" rows="5"></textarea>
+    @error('deskripsi')
+    <script>
+    function myFunction() {
+    alert("Hello! I am an alert box!");
+    }
+    </script>
+    @enderror
     {{--input dropdown--}}
     <select class="form-select" name="skala_prioritas" aria-label="Default select example" id="priority-input">
         <option selected disabled>Open this select menu</option>
@@ -34,5 +42,5 @@
 
 <div class="modal-footer">
     <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-    <button type="submit" class="btn btn-primary">Save changes</button>
+    <button type="submit" class="btn btn-primary">Add Agenda</button>
 </div>

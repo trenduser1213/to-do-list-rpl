@@ -15,6 +15,7 @@
     <link href="{{ asset('css/AllTask.css') }}" rel="stylesheet">
     <script type="text/javascript" src="{{asset('js/AllTask.js')}}"></script>
     <title>All Task</title>
+
 </head>
 <body>
   <div class="body-container">
@@ -47,12 +48,10 @@
                 </button>
               </li>
               <li>
-                <form action="{{ route('logout') }}" method="POST">
-                  @csrf
-                  <button class="dropdown-item d-flex align-items-center" type="submit" style="color:#D1453B">
-                    <i class="bi bi-box-arrow-right pe-2" style="font-size: 18px"></i> Log Out
-                  </button>
-                </form>
+                <button class="dropdown-item d-flex align-items-center" style="color:#D1453B"
+                data-bs-toggle="modal" data-bs-target="#signoutmodal">
+                  <i class="bi bi-box-arrow-right pe-2" style="font-size: 18px"></i> Log Out
+                </button>
               </li>
             </ul>
           </div>
@@ -60,6 +59,7 @@
         </div>
       </div>
     </div>
+
     <div class="alltask-content">
       <div class="left-side">
         <div class="list-container">
@@ -302,6 +302,46 @@
   </div>
   <!-- Edit Modal -->
 
+  <!-- Log Out Modul -->
+  <div class="modal fade" tabindex="-1" id="signoutmodal">
+    <div class="modal-dialog modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Are you sure you want to sign out?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit" class="btn btn-danger">Yes</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Log Out Modul -->
+
+  <!-- Success Modul -->
+  <div id="successModal" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered modal-confirm">
+      <div class="modal-content">
+        <div class="modal-header flex-column">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <div class="icon-box">
+            <i class="material-icons">&#xE5CD;</i>
+          </div>
+          <h4 class="modal-title w-100">Success</h4>	
+        </div>
+        <div class="modal-body">
+          <p>Anda Berhasil Membuat Agenda</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Success Modul -->
+
+  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js" type="text/javascript"></script>
