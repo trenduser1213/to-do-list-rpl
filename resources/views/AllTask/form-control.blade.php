@@ -22,14 +22,7 @@
             </div>
         </label>
     </div>
-    <textarea type="text" class="form-control" name="deskripsi" placeholder="Description ..." id="description-input" rows="5"></textarea>
-    @error('deskripsi')
-    <script>
-    function myFunction() {
-    alert("Hello! I am an alert box!");
-    }
-    </script>
-    @enderror
+    <textarea type="text" class="form-control" name="deskripsi" placeholder="Description ..." id="description-input" rows="5" required></textarea>
     {{--input dropdown--}}
     <select class="form-select" name="skala_prioritas" aria-label="Default select example" id="priority-input">
         <option selected disabled>Open this select menu</option>
@@ -42,5 +35,15 @@
 
 <div class="modal-footer">
     <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-    <button type="submit" class="btn btn-primary">Add Agenda</button>
+    <button type="submit" class="btn btn-primary" onclick="myFunction()">Add Agenda</button>
 </div>
+<script>
+    function myFunction() {
+    var inpObj = document.getElementById("description-input");
+    if (!inpObj.checkValidity()) {
+        innerHTML = alert('Deskripsi Kosong');
+    } else {
+        innerHTML = alert('sukses');
+    } 
+    } 
+</script>
