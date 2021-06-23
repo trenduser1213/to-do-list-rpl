@@ -47,12 +47,10 @@
                 </button>
               </li>
               <li>
-                <form action="{{ route('logout') }}" method="POST">
-                  @csrf
-                  <button class="dropdown-item d-flex align-items-center" type="submit" style="color:#D1453B">
-                    <i class="bi bi-box-arrow-right pe-2" style="font-size: 18px"></i> Log Out
-                  </button>
-                </form>
+                <button class="dropdown-item d-flex align-items-center" style="color:#D1453B"
+                data-bs-toggle="modal" data-bs-target="#signoutmodal">
+                  <i class="bi bi-box-arrow-right pe-2" style="font-size: 18px"></i> Log Out
+                </button>
               </li>
             </ul>
           </div>
@@ -60,6 +58,7 @@
         </div>
       </div>
     </div>
+
     <div class="alltask-content">
       <div class="left-side">
         <div class="list-container">
@@ -162,58 +161,51 @@
                   <div class="accor-list-content">
                     <ul class="list-group list-group-flush group-list-all-task">
                       {{-- list item --}}
-                      @for ($i = 0; $i < $priority->count(); $i++)
-                        @if ($i===0)
-                            <li class="list-group-item">
-                              <div class="task-container priority-task">
-                                <div class="tesk-text-container d-flex">
-                                  <div class="task-icon-checkbox-container d-flex align-items-center">
-                                    <form method="Post" action="{{ route('set-done-task', $priority[$i]->id) }}">
-                                      @csrf
-                                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onChange="this.form.submit()">
-                                    </form>
-                                  </div>
-                                  <div>
-                                    <strong style="color:white">{{$priority[$i]->nama_agenda}}</strong>
-                                    <p style="color:rgba(255, 255, 255, 0.58);margin:0px">{{$priority[$i]->deskripsi}}</p>
-                                    <div class="dueto-task-container">
-                                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M9 0C4.03732 0 0 4.03732 0 9C0 13.9627 4.03732 18 9 18C13.9627 18 18 13.9627 18 9C18 4.03732 13.9627 0 9 0ZM9 16.0328C5.12202 16.0328 1.96721 12.878 1.96721 9C1.96721 5.12221 5.12202 1.96721 9 1.96721C12.878 1.96721 16.0328 5.12221 16.0328 9C16.0328 12.878 12.878 16.0328 9 16.0328Z" fill="#fff"/>
-                                        <path d="M9.77872 9.01078V5.23868C9.77872 4.8175 9.43742 4.4762 9.01639 4.4762C8.59524 4.4762 8.25391 4.8175 8.25391 5.23868V9.25437C8.25391 9.26636 8.25686 9.27761 8.25744 9.2896C8.24741 9.49693 8.31884 9.70744 8.47718 9.86581L11.3169 12.7053C11.6147 13.0031 12.0975 13.0031 12.3951 12.7053C12.6927 12.4074 12.6929 11.9247 12.3951 11.627L9.77872 9.01078Z" fill="#fff"/>
-                                      </svg>
-                                      <p style="color:white">{{ \Carbon\Carbon::parse($priority[$i]->tenggat_waktu)->format('d F Y H:i:s') }}</p>
-                                    </div>
-                                  </div>
+                      @foreach($priority as $prio)
+                        @if ($prio->id === $priority->first()->id)
+                        <li class="list-group-item">
+                          <div class="task-container priority-task">
+                            <div class="tesk-text-container d-flex">
+                              <div class="task-icon-checkbox-container d-flex align-items-center">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onChange="this.form.submit()">
+                              </div>
+                              <div>
+                                <strong style="color:white">{{$prio->nama_agenda}}</strong>
+                                <p style="color:rgba(255, 255, 255, 0.58);margin:0px">{{$prio->deskripsi}}</p>
+                                <div class="dueto-task-container">
+                                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 0C4.03732 0 0 4.03732 0 9C0 13.9627 4.03732 18 9 18C13.9627 18 18 13.9627 18 9C18 4.03732 13.9627 0 9 0ZM9 16.0328C5.12202 16.0328 1.96721 12.878 1.96721 9C1.96721 5.12221 5.12202 1.96721 9 1.96721C12.878 1.96721 16.0328 5.12221 16.0328 9C16.0328 12.878 12.878 16.0328 9 16.0328Z" fill="#fff"/>
+                                    <path d="M9.77872 9.01078V5.23868C9.77872 4.8175 9.43742 4.4762 9.01639 4.4762C8.59524 4.4762 8.25391 4.8175 8.25391 5.23868V9.25437C8.25391 9.26636 8.25686 9.27761 8.25744 9.2896C8.24741 9.49693 8.31884 9.70744 8.47718 9.86581L11.3169 12.7053C11.6147 13.0031 12.0975 13.0031 12.3951 12.7053C12.6927 12.4074 12.6929 11.9247 12.3951 11.627L9.77872 9.01078Z" fill="#fff"/>
+                                  </svg>
+                                  <p style="color:white">{{$prio->tenggat_waktu}}</p>
                                 </div>
                               </div>
-                            </li>
-                          @else
-                            <li class="list-group-item">
-                              <div class="task-container justify-content-between">
-                                <div class="tesk-text-container d-flex align-items-center">
-                                  <div class="task-icon-checkbox-container">
-                                    <form method="Post" action="{{ route('set-done-task', $priority[$i]->id) }}">
-                                      @csrf
-                                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onChange="this.form.submit()">
-                                    </form>
-                                  </div>
-                                  <div class="task-content">
-                                    <strong>{{$priority[$i]->nama_agenda}}</strong>
-                                    <p style="color:#808080">{{$priority[$i]->deskripsi}}</p>
-                                    <div class="dueto-task-container">
-                                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M9 0C4.03732 0 0 4.03732 0 9C0 13.9627 4.03732 18 9 18C13.9627 18 18 13.9627 18 9C18 4.03732 13.9627 0 9 0ZM9 16.0328C5.12202 16.0328 1.96721 12.878 1.96721 9C1.96721 5.12221 5.12202 1.96721 9 1.96721C12.878 1.96721 16.0328 5.12221 16.0328 9C16.0328 12.878 12.878 16.0328 9 16.0328Z" fill="#D1453B"/>
-                                        <path d="M9.77872 9.01078V5.23868C9.77872 4.8175 9.43742 4.4762 9.01639 4.4762C8.59524 4.4762 8.25391 4.8175 8.25391 5.23868V9.25437C8.25391 9.26636 8.25686 9.27761 8.25744 9.2896C8.24741 9.49693 8.31884 9.70744 8.47718 9.86581L11.3169 12.7053C11.6147 13.0031 12.0975 13.0031 12.3951 12.7053C12.6927 12.4074 12.6929 11.9247 12.3951 11.627L9.77872 9.01078Z" fill="#D1453B"/>
-                                      </svg>
-                                      <p>{{$priority[$i]->tenggat_waktu}}</p>
-                                    </div>
-                                  </div>
+                            </div>
+                          </div>
+                        </li>
+                      @else
+                        <li class="list-group-item">
+                          <div class="task-container justify-content-between">
+                            <div class="tesk-text-container d-flex align-items-center">
+                              <div class="task-icon-checkbox-container">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onChange="this.form.submit()">
+                              </div>
+                              <div class="task-content">
+                                <strong>{{$prio->nama_agenda}}</strong>
+                                <p style="color:#808080">{{$prio->deskripsi}}</p>
+                                <div class="dueto-task-container">
+                                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 0C4.03732 0 0 4.03732 0 9C0 13.9627 4.03732 18 9 18C13.9627 18 18 13.9627 18 9C18 4.03732 13.9627 0 9 0ZM9 16.0328C5.12202 16.0328 1.96721 12.878 1.96721 9C1.96721 5.12221 5.12202 1.96721 9 1.96721C12.878 1.96721 16.0328 5.12221 16.0328 9C16.0328 12.878 12.878 16.0328 9 16.0328Z" fill="#D1453B"/>
+                                    <path d="M9.77872 9.01078V5.23868C9.77872 4.8175 9.43742 4.4762 9.01639 4.4762C8.59524 4.4762 8.25391 4.8175 8.25391 5.23868V9.25437C8.25391 9.26636 8.25686 9.27761 8.25744 9.2896C8.24741 9.49693 8.31884 9.70744 8.47718 9.86581L11.3169 12.7053C11.6147 13.0031 12.0975 13.0031 12.3951 12.7053C12.6927 12.4074 12.6929 11.9247 12.3951 11.627L9.77872 9.01078Z" fill="#D1453B"/>
+                                  </svg>
+                                  <p>{{$prio->tenggat_waktu}}</p>
                                 </div>
                               </div>
-                            </li>
-                          @endif
-                      @endfor
-                     
+                            </div>
+                          </div>
+                        </li>
+                      @endif
+                    @endforeach 
                       {{-- list item --}}
                     </ul>
                   </div>
@@ -353,6 +345,48 @@
   </div>
   <!-- Edit Modal -->
 
+  <!-- Log Out Modul -->
+  <div class="modal fade" tabindex="-1" id="signoutmodal">
+    <div class="modal-dialog modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Are you sure you want to sign out?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit" class="btn btn-danger">Yes</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Log Out Modul -->
+
+  <!-- Success Modul -->
+  <div id="successModal" class="modal-custome">
+
+    <!-- Modal content -->
+    <div class="modal-content-custome">
+      <div class="modal-header-custome">
+        <span class="close-custome" id="close-custome-btn">&times;</span>
+        <h2 >Success</h2>
+      </div>
+      <div class="modal-body-custome">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z " 
+          fill="#2FAF3C"/>
+        </svg>
+        <p style="margin-bottom: 32px;margin-top:32px">Horee.. kamu berhasil membuat jadwal agendamu..</p>
+      </div>
+    </div>
+  
+  </div>
+  <!-- Success Modul -->
+
+  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js" type="text/javascript"></script>
@@ -365,6 +399,19 @@
         }).on("dp.change", function(e) {
           console.log(e);
           $('#date-text').html(this.value);
+        });
+    });
+  </script>
+  <script type="text/javascript">
+    $(function () {
+        var d = new Date();
+        $('#durationpicker').datetimepicker({
+          format: 'HH:mm:ss',
+          sideBySide:true,
+          defaultDate: d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate() + " 00:00:00",
+        }).on("dp.change", function(e) {
+          console.log(e);
+          $('#duration-text').html(this.value);
         });
     });
   </script>
@@ -433,6 +480,29 @@
         e.preventDefault();
         setEditDataForm(e.target.parentElement.dataset.id);
         setDataEdit(e.target.parentElement.dataset.id);
+    }
+  </script>
+   <script>
+    var succesmodal = document.getElementById("successModal");
+    var spanClose = document.getElementById("close-custome-btn");
+
+    window.onclick = function(event) {
+      if (event.target == succesmodal) {
+        succesmodal.style.display = "none";
+      }
+    }
+
+    spanClose.onclick = function(event){
+      succesmodal.style.display = "none";
+    }
+
+    function $_GET(q,s) {
+        s = (s) ? s : window.location.search;
+        var re = new RegExp('&amp;'+q+'=([^&amp;]*)','i');
+        return (s=s.replace(/^\?/,'&amp;').match(re)) ?s=s[1] :s='';
+    }
+    if($_GET('action')==="success"){
+      succesmodal.style.display='block';
     }
   </script>
 </body>

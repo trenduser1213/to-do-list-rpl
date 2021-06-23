@@ -11,9 +11,17 @@
         <div class="d-flex item-control" style="margin-left: 12px" id="description-container-edit" onclick="descriptionClickListenerEdit()">
             <i class="bi bi-blockquote-right" id="description-icon-edit"></i><p style="padding-left:5px;" id="description-text-edit">Description</p>
         </div>
-        <div class="d-flex item-control" style="margin-left: 12px" id="priority-container-edit" onclick="priorityClickListenerEdit()">
-            <i class="bi bi-list-ul" id="priority-icon-edit"></i><p style="padding-left:5px;" id="priority-text-edit">Priority</p>
+        <div class="d-flex item-control" style="margin-left: 12px;margin-right:12px" id="priority-container-edit" onclick="priorityClickListenerEdit()">
+            <i class="bi bi-list-ul" id="priority-icon-edit"></i><p style="padding-left:5px;" id="priority-text-edit">Priorxity</p>
         </div>
+
+        <label onclick="durationClickListener()" class="p-0 m-0" id="duration-container-edit" >
+            <input type='text' name="durasi" class="form-control" id="durationpicker-edit">
+            <div class="item-control d-flex align-items-center h-100">
+                <i class="bi bi-stopwatch" id="duration-icon-edit"></i><p style="padding-left:5px;" id="duration-text-edit">{{gmdate("H:i:s", $agenda->durasi )}}</p>
+            </div>
+        </label>
+
     </div>
     <textarea type="text" class="form-control" name="deskripsi" placeholder="Description ..." id="description-input-edit" rows="5">{{ $agenda->deskripsi ?? $agenda->deskripsi }}</textarea>
     {{--input dropdown--}}
@@ -24,6 +32,7 @@
         <option {{ $agenda->skala_prioritas == "3" ? "selected" : "" }} value="3">High</option>
     </select>
     {{--input dropdown--}}
+    
 </div>
 
 <div class="modal-footer">
@@ -39,6 +48,17 @@
           sideBySide:true,
         }).on("dp.change", function() {
           $('#date-text-edit').html(this.value);
+        });
+    });
+</script>
+<script>
+    $(function () {
+        $('#durationpicker-edit').datetimepicker({
+          format: 'HH:mm:ss',
+          defaultDate: {!! json_encode($agenda->tenggat_waktu) !!},
+          sideBySide:true,
+        }).on("dp.change", function() {
+          $('#duration-text-edit').html(this.value);
         });
     });
 </script>
