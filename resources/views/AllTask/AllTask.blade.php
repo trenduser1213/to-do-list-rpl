@@ -321,7 +321,7 @@
   </div>
   <!-- Log Out Modul -->
 
-  <!-- Success Modul -->
+  <!-- Success Add Modul -->
   <div id="successModal" class="modal-custome">
 
     <!-- Modal content -->
@@ -335,7 +335,7 @@
           <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z " 
           fill="#2FAF3C"/>
         </svg>
-        <p style="margin-bottom: 32px;margin-top:32px">Horee.. kamu berhasil membuat jadwal agendamu..</p>
+        <p style="margin-bottom: 32px;margin-top:32px" id="success_text"></p>
       </div>
     </div>
   
@@ -441,6 +441,7 @@
    <script>
     var succesmodal = document.getElementById("successModal");
     var spanClose = document.getElementById("close-custome-btn");
+    var successText = document.getElementById("success_text");
 
     window.onclick = function(event) {
       if (event.target == succesmodal) {
@@ -457,8 +458,18 @@
         var re = new RegExp('&amp;'+q+'=([^&amp;]*)','i');
         return (s=s.replace(/^\?/,'&amp;').match(re)) ?s=s[1] :s='';
     }
-    if($_GET('action')==="success"){
+    console.log($_GET('action'));
+    if($_GET('action')==="add"){
       succesmodal.style.display='block';
+      successText.innerHTML = "Horee.. kamu berhasil membuat jadwal agendamu..";
+    }else if($_GET('action')==="delete"){
+      succesmodal.style.display='block';
+      successText.innerHTML = "Horee.. kamu berhasil menghapus jadwal agendamu..";
+    }else if($_GET('action')==="done"){
+      succesmodal.style.display='block';
+      successText.innerHTML = "Horee.. kamu berhasil update jadwal agendamu..";
+    }else{
+
     }
   </script>
 </body>

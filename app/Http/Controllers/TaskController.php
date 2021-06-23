@@ -34,22 +34,22 @@ class TaskController extends Controller
 
         $attr['status'] = ($now == $deadline) ? 'today' : (($now < $deadline) ? 'upcoming' : 'late');
 
-        $str_time = $taskRequest->durasi;
-
-        sscanf($str_time, "%d:%d:%d", $hours, $minutes, $seconds);
+        sscanf($taskRequest->durasi, "%d:%d:%d", $hours, $minutes, $seconds);
 
         $attr['durasi'] = isset($seconds) ? $hours * 3600 + $minutes * 60 + $seconds : $hours * 60 + $minutes;
 
         auth()->user()->agendas()->create($attr);
+
+        request()->session()->flash('success', 'The post was created');
         
-        return redirect('/?action=success');
+        return redirect('/?action=add');
     }
 
     public function destroy(Agenda $agenda)
     {
         $agenda->delete();
         request()->session()->flash('success', 'Agenda berhasil dihapus');
-        return redirect('/');
+        return redirect('/?action=delete');
     }
 
     public function update(TaskRequest $taskRequest,Agenda $agenda ){
@@ -59,9 +59,13 @@ class TaskController extends Controller
 
         $attr['status'] = ($now == $deadline) ? 'today' : (($now < $deadline) ? 'upcoming' : 'late');
 
+        sscanf($taskRequest->durasi, "%d:%d:%d", $hours, $minutes, $seconds);
+
+        $attr['durasi'] = isset($seconds) ? $hours * 3600 + $minutes * 60 + $seconds : $hours * 60 + $minutes;
+
         auth()->user()->agendas()->where('id','=',$agenda->id)->update($attr);
 
-        return redirect('/');
+        return redirect('/?action=done');
     }
 
     public function setDataForm(Agenda $agenda)
