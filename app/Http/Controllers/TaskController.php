@@ -45,7 +45,7 @@ class TaskController extends Controller
         $attr['durasi'] = isset($seconds) ? $hours * 3600 + $minutes * 60 + $seconds : $hours * 60 + $minutes;
 
         auth()->user()->agendas()->create($attr);
-        
+
         return redirect('/?action=success');
     }
 

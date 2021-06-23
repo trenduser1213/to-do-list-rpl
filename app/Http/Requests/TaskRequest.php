@@ -24,7 +24,8 @@ class TaskRequest extends FormRequest
     public function rules()
     {
         return [
-            'nama_agenda' => 'required|max:32'
+            'nama_agenda' => 'required|max:32',
+            'deskripsi' => 'required'
         ];
     }
 }

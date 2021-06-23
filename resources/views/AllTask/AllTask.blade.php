@@ -167,7 +167,10 @@
                           <div class="task-container priority-task">
                             <div class="tesk-text-container d-flex">
                               <div class="task-icon-checkbox-container d-flex align-items-center">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onChange="this.form.submit()">
+                                <form method="Post" action="{{ route('set-done-task', $prio->id) }}">
+                                @csrf
+                                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onChange="this.form.submit()">
+                                </form>
                               </div>
                               <div>
                                 <strong style="color:white">{{$prio->nama_agenda}}</strong>
@@ -188,7 +191,10 @@
                           <div class="task-container justify-content-between">
                             <div class="tesk-text-container d-flex align-items-center">
                               <div class="task-icon-checkbox-container">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onChange="this.form.submit()">
+                                <form method="Post" action="{{ route('set-done-task', $prio->id) }}">
+                                @csrf
+                                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onChange="this.form.submit()">
+                                </form>
                               </div>
                               <div class="task-content">
                                 <strong>{{$prio->nama_agenda}}</strong>

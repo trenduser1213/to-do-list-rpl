@@ -1,5 +1,6 @@
 <div class="modal-body">
     <input type="text" class="form-control"  name="nama_agenda" placeholder="Activity Name ...">
+    
     {{-- action control --}}
     <div class="d-flex item-control-container">
         <label onclick="dateClickListener()" class="p-0 m-0" id="date-container">
@@ -21,7 +22,7 @@
             </div>
         </label>
     </div>
-    <textarea type="text" class="form-control" name="deskripsi" placeholder="Description ..." id="description-input" rows="5"></textarea>
+    <textarea type="text" class="form-control" name="deskripsi" placeholder="Description ..." id="description-input" rows="5" required></textarea>
     {{--input dropdown--}}
     <select class="form-select" name="skala_prioritas" aria-label="Default select example" id="priority-input">
         <option selected disabled>Open this select menu</option>
@@ -34,5 +35,16 @@
 
 <div class="modal-footer">
     <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-    <button type="submit" class="btn btn-primary">Add Agenda</button>
+    <button type="submit" class="btn btn-primary" onclick="myFunction()">Add Agenda</button>
 </div>
+<script>
+    function myFunction() {
+        var inpObj = document.getElementById("description-input");
+        if (!inpObj.checkValidity()) {
+            innerHTML = alert('Deskripsi Kosong');
+        } 
+        // else {
+        //     innerHTML = alert('sukses');
+        // } 
+    } 
+</script>
